@@ -1102,13 +1102,9 @@ a {
 /* ##### home - blog ######  */
 
 #blog{
-    padding-bottom: 500px;
+    padding-bottom: 3rem;
 }
-@media (max-width: 768px) {
-    #blog{
-        padding-bottom: 600px;
-    }
-}
+
 #blog .card {
     overflow: hidden;
 }
@@ -1157,7 +1153,7 @@ a {
     min-height:200vh;
     z-index:1;
     background-color: var(--white);
-    margin-bottom: 458.4px;
+    margin-bottom: 712.84px;
 }
 
 #footer{

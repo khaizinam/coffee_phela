@@ -46,13 +46,13 @@ $(document).ready(function () {
   //view more
   $("#toggle-vm").click(function () {
     var elem = $("#toggle-vm").text();
-    if (elem == "Daha çox") {
+    if (elem == "Xem thêm") {
       //Stuff to do when btn is in the read more state
-      $("#toggle-vm").text("Daha az");
+      $("#toggle-vm").text("Xem ít hơn");
       $("#menu-displaynone").slideDown();
     } else {
       //Stuff to do when btn is in the read less state
-      $("#toggle-vm").text("Daha çox");
+      $("#toggle-vm").text("Xem thêm");
       $("#menu-displaynone").hide();
 
     }

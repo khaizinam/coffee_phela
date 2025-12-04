@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phela_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - phela-network
+    depends_on:
+      - db
+    entrypoint: ["/var/www/docker-entrypoint.sh"]
+    command: php-fpm
+
+  webserver:
+    image: nginx:alpine
+    container_name: phela_webserver
+    restart: unless-stopped
+    ports:
+      - "8020:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - phela-network
+    depends_on:
+      - app
+
+  db:
+    image: mariadb:10.11
+    container_name: phela_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: phela_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_USER: phela_user
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql
+    networks:
+      - phela-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phela_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8021:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - phela-network
+    depends_on:
+      - db
+
+networks:
+  phela-network:
+    driver: bridge
+

@@ -3,14 +3,14 @@
     <div class="row">
       <!-- Cột 1: VỀ CHÚNG TÔI -->
       <div class="footer-col col-md-4 col-sm-6 mb-4">
-        <div class="footer-logo mb-3">
+        <a href="{{ route('home') }}" title="Phê La" class="footer-logo mb-3">
           <img src="{{ asset('img/new/logo-phela.png') }}" alt="Phê La" class="img-fluid" style="max-width: 150px;">
-        </div>
+        </a>
         <h3 class="heading footer-heading mb-3">VỀ CHÚNG TÔI</h3>
         <ul class="list-unstyled footer-text">
           <li class="mb-2"><a href="#" class="text-decoration-none" style="color: #d8d8d8;">Cửa hàng</a></li>
           <li class="mb-2"><a href="{{ route('about') }}" class="text-decoration-none" style="color: #d8d8d8;">Về Phê La</a></li>
-          <li class="mb-2"><a href="#" class="text-decoration-none" style="color: #d8d8d8;">Hệ thống cửa hàng</a></li>
+          <li class="mb-2"><a href="{{ route('stores') }}" class="text-decoration-none" style="color: #d8d8d8;">Hệ thống cửa hàng</a></li>
         </ul>
       </div>
 
@@ -27,7 +27,7 @@
           <p class="mb-3" style="font-size: 0.85rem;">Giấy chứng nhận Đăng ký kinh doanh số 0317601095 do Sở Kế Hoạch & Đầu Tư Thành Phố Hồ Chí Minh cấp ngày 09/12/2022</p>
           
           <p class="mb-2"><strong>EMAIL HỖ TRỢ KHÁCH HÀNG</strong></p>
-          <a href="mailto:cskh@phela.vn" class="footer-contact-mail text-decoration-none d-block mb-3">
+          <a href="mailto:cskh@phela.vn" class="text-decoration-none d-block mb-3" style="color: #d8d8d8;">
             cskh@phela.vn
           </a>
           

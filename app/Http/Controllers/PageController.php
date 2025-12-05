@@ -174,67 +174,123 @@ class PageController extends Controller
 
     public function stores()
     {
-        // Dữ liệu hệ thống cửa hàng theo tỉnh thành
-        $stores = [
-            'Hồ Chí Minh' => [
-                [
-                    'name' => 'Phela - Trụ sở chính',
-                    'address' => '289 Đinh Bộ Lĩnh, Phường Bình Thạnh, TP. Hồ Chí Minh',
-                    'phone' => '1900 3013',
-                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
-                    'opened' => '2022',
-                    'map_url' => 'https://www.google.com/maps?q=289+Đinh+Bộ+Lĩnh,+Bình+Thạnh,+Hồ+Chí+Minh'
-                ],
+        // Dữ liệu hệ thống cửa hàng - tất cả địa chỉ trong một mảng phẳng
+        $allStores = [
+            [
+                'city' => 'Hồ Chí Minh',
+                'name' => 'Phela - Trụ sở chính',
+                'address' => '289 Đinh Bộ Lĩnh, Phường Bình Thạnh, TP. Hồ Chí Minh, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2022',
+                'map_url' => 'https://www.google.com/maps?q=289+Đinh+Bộ+Lĩnh,+Bình+Thạnh,+Hồ+Chí+Minh'
             ],
-            'Hà Nội' => [
-                [
-                    'name' => 'Phela - Chi nhánh Hà Nội',
-                    'address' => '65 Phạm Ngọc Thạch, Phường Đống Đa, Hà Nội',
-                    'phone' => '1900 3013',
-                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
-                    'opened' => '03/2021',
-                    'map_url' => 'https://www.google.com/maps?q=65+Phạm+Ngọc+Thạch,+Đống+Đa,+Hà+Nội'
-                ],
-                [
-                    'name' => 'Phela - Chi nhánh Hoàng Mai',
-                    'address' => 'Lô 04-9A Khu công nghiệp Vĩnh Hoàng, Phường Hoàng Mai, Hà Nội',
-                    'phone' => '1900 3013',
-                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
-                    'opened' => '2022',
-                    'map_url' => 'https://www.google.com/maps?q=Lô+04-9A+Khu+công+nghiệp+Vĩnh+Hoàng,+Hoàng+Mai,+Hà+Nội'
-                ],
+            [
+                'city' => 'Hồ Chí Minh',
+                'name' => 'Phela - Chi nhánh Quận 1',
+                'address' => '123 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2023',
+                'map_url' => 'https://www.google.com/maps?q=123+Nguyễn+Huệ,+Quận+1,+Hồ+Chí+Minh'
             ],
-            'Đà Nẵng' => [
-                [
-                    'name' => 'Phela - Chi nhánh Đà Nẵng',
-                    'address' => 'Đang cập nhật',
-                    'phone' => '1900 3013',
-                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
-                    'opened' => 'Sắp khai trương',
-                    'map_url' => '#'
-                ],
+            [
+                'city' => 'Hồ Chí Minh',
+                'name' => 'Phela - Chi nhánh Quận 3',
+                'address' => '456 Võ Văn Tần, Phường 6, Quận 3, TP. Hồ Chí Minh, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2023',
+                'map_url' => 'https://www.google.com/maps?q=456+Võ+Văn+Tần,+Quận+3,+Hồ+Chí+Minh'
             ],
-            'Đà Lạt' => [
-                [
-                    'name' => 'Phela - Chi nhánh Đà Lạt',
-                    'address' => 'Đang cập nhật',
-                    'phone' => '1900 3013',
-                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
-                    'opened' => 'Sắp khai trương',
-                    'map_url' => '#'
-                ],
+            [
+                'city' => 'Hà Nội',
+                'name' => 'Phela - Chi nhánh Hà Nội',
+                'address' => '65 Phạm Ngọc Thạch, Phường Đống Đa, Hà Nội, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '03/2021',
+                'map_url' => 'https://www.google.com/maps?q=65+Phạm+Ngọc+Thạch,+Đống+Đa,+Hà+Nội'
             ],
-            'Biên Hòa' => [
-                [
-                    'name' => 'Phela - Chi nhánh Biên Hòa',
-                    'address' => 'Đang cập nhật',
-                    'phone' => '1900 3013',
-                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
-                    'opened' => 'Sắp khai trương',
-                    'map_url' => '#'
-                ],
+            [
+                'city' => 'Hà Nội',
+                'name' => 'Phela - Chi nhánh Hoàng Mai',
+                'address' => 'Lô 04-9A Khu công nghiệp Vĩnh Hoàng, Phường Hoàng Mai, Hà Nội, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2022',
+                'map_url' => 'https://www.google.com/maps?q=Lô+04-9A+Khu+công+nghiệp+Vĩnh+Hoàng,+Hoàng+Mai,+Hà+Nội'
+            ],
+            [
+                'city' => 'Hà Nội',
+                'name' => 'Phela - Chi nhánh Cầu Giấy',
+                'address' => '789 Trần Duy Hưng, Phường Trung Hòa, Cầu Giấy, Hà Nội, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2024',
+                'map_url' => 'https://www.google.com/maps?q=789+Trần+Duy+Hưng,+Cầu+Giấy,+Hà+Nội'
+            ],
+            [
+                'city' => 'Đà Nẵng',
+                'name' => 'Phela - Chi nhánh Đà Nẵng',
+                'address' => '321 Nguyễn Văn Linh, Phường Nam Dương, Hải Châu, Đà Nẵng, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2023',
+                'map_url' => 'https://www.google.com/maps?q=321+Nguyễn+Văn+Linh,+Đà+Nẵng'
+            ],
+            [
+                'city' => 'Đà Lạt',
+                'name' => 'Phela - Chi nhánh Đà Lạt',
+                'address' => '159 Nguyễn Văn Cừ, Phường 1, Đà Lạt, Lâm Đồng, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2024',
+                'map_url' => 'https://www.google.com/maps?q=159+Nguyễn+Văn+Cừ,+Đà+Lạt'
+            ],
+            [
+                'city' => 'Biên Hòa',
+                'name' => 'Phela - Chi nhánh Biên Hòa',
+                'address' => '456 Phạm Văn Thuận, Phường Tân Tiến, Biên Hòa, Đồng Nai, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2023',
+                'map_url' => 'https://www.google.com/maps?q=456+Phạm+Văn+Thuận,+Biên+Hòa'
+            ],
+            [
+                'city' => 'Nha Trang',
+                'name' => 'Phela - Chi nhánh Nha Trang',
+                'address' => '789 Trần Phú, Phường Lộc Thọ, Nha Trang, Khánh Hòa, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2024',
+                'map_url' => 'https://www.google.com/maps?q=789+Trần+Phú,+Nha+Trang'
+            ],
+            [
+                'city' => 'Huế',
+                'name' => 'Phela - Chi nhánh Huế',
+                'address' => '123 Lê Lợi, Phường Phú Hội, Huế, Thừa Thiên Huế, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2024',
+                'map_url' => 'https://www.google.com/maps?q=123+Lê+Lợi,+Huế'
+            ],
+            [
+                'city' => 'Cần Thơ',
+                'name' => 'Phela - Chi nhánh Cần Thơ',
+                'address' => '456 Nguyễn Văn Cừ, Phường An Khánh, Ninh Kiều, Cần Thơ, Việt Nam',
+                'phone' => '1900 3013',
+                'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                'opened' => '2024',
+                'map_url' => 'https://www.google.com/maps?q=456+Nguyễn+Văn+Cừ,+Cần+Thơ'
             ],
         ];
+
+        // Nhóm lại theo tỉnh thành cho structured data
+        $stores = [];
+        foreach ($allStores as $store) {
+            $stores[$store['city']][] = $store;
+        }
 
         $seo = [
             'title' => 'Hệ thống cửa hàng - Phela | Danh sách chi nhánh',
@@ -269,7 +325,7 @@ class PageController extends Controller
             ]
         ];
 
-        return view('pages.stores', compact('stores', 'seo'));
+        return view('pages.stores', compact('allStores', 'stores', 'seo'));
     }
 }
 

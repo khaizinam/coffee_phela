@@ -171,5 +171,105 @@ class PageController extends Controller
 
         return view('pages.blog-recipe', compact('seo'));
     }
+
+    public function stores()
+    {
+        // Dữ liệu hệ thống cửa hàng theo tỉnh thành
+        $stores = [
+            'Hồ Chí Minh' => [
+                [
+                    'name' => 'Phela - Trụ sở chính',
+                    'address' => '289 Đinh Bộ Lĩnh, Phường Bình Thạnh, TP. Hồ Chí Minh',
+                    'phone' => '1900 3013',
+                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                    'opened' => '2022',
+                    'map_url' => 'https://www.google.com/maps?q=289+Đinh+Bộ+Lĩnh,+Bình+Thạnh,+Hồ+Chí+Minh'
+                ],
+            ],
+            'Hà Nội' => [
+                [
+                    'name' => 'Phela - Chi nhánh Hà Nội',
+                    'address' => '65 Phạm Ngọc Thạch, Phường Đống Đa, Hà Nội',
+                    'phone' => '1900 3013',
+                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                    'opened' => '03/2021',
+                    'map_url' => 'https://www.google.com/maps?q=65+Phạm+Ngọc+Thạch,+Đống+Đa,+Hà+Nội'
+                ],
+                [
+                    'name' => 'Phela - Chi nhánh Hoàng Mai',
+                    'address' => 'Lô 04-9A Khu công nghiệp Vĩnh Hoàng, Phường Hoàng Mai, Hà Nội',
+                    'phone' => '1900 3013',
+                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                    'opened' => '2022',
+                    'map_url' => 'https://www.google.com/maps?q=Lô+04-9A+Khu+công+nghiệp+Vĩnh+Hoàng,+Hoàng+Mai,+Hà+Nội'
+                ],
+            ],
+            'Đà Nẵng' => [
+                [
+                    'name' => 'Phela - Chi nhánh Đà Nẵng',
+                    'address' => 'Đang cập nhật',
+                    'phone' => '1900 3013',
+                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                    'opened' => 'Sắp khai trương',
+                    'map_url' => '#'
+                ],
+            ],
+            'Đà Lạt' => [
+                [
+                    'name' => 'Phela - Chi nhánh Đà Lạt',
+                    'address' => 'Đang cập nhật',
+                    'phone' => '1900 3013',
+                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                    'opened' => 'Sắp khai trương',
+                    'map_url' => '#'
+                ],
+            ],
+            'Biên Hòa' => [
+                [
+                    'name' => 'Phela - Chi nhánh Biên Hòa',
+                    'address' => 'Đang cập nhật',
+                    'phone' => '1900 3013',
+                    'hours' => 'Thứ 2 - Chủ nhật: 8h30 - 22h00',
+                    'opened' => 'Sắp khai trương',
+                    'map_url' => '#'
+                ],
+            ],
+        ];
+
+        $seo = [
+            'title' => 'Hệ thống cửa hàng - Phela | Danh sách chi nhánh',
+            'description' => 'Tìm cửa hàng Phela gần bạn. Hệ thống cửa hàng Phela tại Hồ Chí Minh, Hà Nội, Đà Nẵng, Đà Lạt, Biên Hòa và các tỉnh thành khác.',
+            'keywords' => 'hệ thống cửa hàng Phela, chi nhánh Phela, địa chỉ Phela, cửa hàng Phela, Phela Hà Nội, Phela Hồ Chí Minh',
+            'og_title' => 'Hệ thống cửa hàng - Phela',
+            'og_description' => 'Tìm cửa hàng Phela gần bạn. Hệ thống cửa hàng tại nhiều tỉnh thành trên cả nước.',
+            'og_image' => asset('img/new/logo-phela.png'),
+            'og_url' => route('stores'),
+            'canonical' => route('stores'),
+            'structured_data' => [
+                '@context' => 'https://schema.org',
+                '@type' => 'ItemList',
+                'name' => 'Hệ thống cửa hàng Phela',
+                'description' => 'Danh sách các cửa hàng Phela trên toàn quốc',
+                'itemListElement' => array_map(function ($city, $cityStores) {
+                    return [
+                        '@type' => 'ListItem',
+                        'position' => array_search($city, array_keys($cityStores)) + 1,
+                        'name' => $city,
+                        'item' => array_map(function ($store) {
+                            return [
+                                '@type' => 'LocalBusiness',
+                                'name' => $store['name'],
+                                'address' => $store['address'],
+                                'telephone' => $store['phone'],
+                                'openingHours' => $store['hours']
+                            ];
+                        }, $cityStores)
+                    ];
+                }, array_keys($stores), $stores)
+            ]
+        ];
+
+        return view('pages.stores', compact('stores', 'seo'));
+    }
 }
 

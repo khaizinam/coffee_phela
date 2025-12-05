@@ -49,7 +49,7 @@
   <!-- bootstrap css  -->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <!-- main css  -->
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
+  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   <!-- scrollreveal > always include in the head  -->
   <script src="https://unpkg.com/scrollreveal@4"></script>
   
@@ -85,7 +85,7 @@
   <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
   <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
   <script src="{{ asset('js/jquery.mb.YTPlayer.min.js') }}"></script>
-  <script src="{{ asset('js/script.js') }}?v={{ time() }}"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
   @stack('scripts')
 </body>
 </html>

@@ -112,14 +112,14 @@
     <h6 class="welcome-info-h6 animate text-center pt-0 pt-sm-2 pb-5">~ Đặc biệt hôm nay ~</h6>
     <div class="row text-center">
       <div class="col-sm animate">
-        <img src="img/offer1.jpg" class="offer-image" alt="We offer">
-        <h3 class="heading py-3">Cà phê & Trà</h3>
+        <img src="/img/new/cafe-1.webp" class="offer-image" alt="We offer">
+        <h3 class="heading py-3">Cà phê</h3>
         <p class=" welcome-txt text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
           est vel ipsa! Maiores!</p>
       </div>
       <div class="col-sm col-lg col-sm-6 animate">
-        <img src="img/menyu-breakfast-c.jpg" class="offer-image" alt="We offer">
-        <h3 class="heading py-3">Bánh mì </h3>
+        <img src="/img/new/syphon-1.webp" class="offer-image" alt="We offer">
+        <h3 class="heading py-3">Syphon</h3>
         <p class=" welcome-txt  text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
           est vel ipsa! Maiores!</p>
       </div>

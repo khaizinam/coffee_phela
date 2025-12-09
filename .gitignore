@@ -19,3 +19,4 @@ yarn.lock
 /.vscode
 copy-manifest.js
 composer.lock
+*.md

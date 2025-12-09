@@ -1,14 +1,14 @@
 <!-- Media Gallery Modal -->
 <div id="mediaGalleryModal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="flex items-center justify-center min-h-screen px-4 text-center">
         <!-- Background overlay -->
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onclick="closeMediaGallery()"></div>
 
         <!-- Modal panel -->
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-6xl sm:w-full">
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="inline-block align-middle bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all max-w-6xl w-full max-h-[80vh]">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 h-full overflow-y-auto">
                 <div class="sm:flex sm:items-start">
-                    <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+                    <div class="mt-3 text-center sm:mt-0 sm:text-left w-full py-4">
                         <!-- Header with title and upload button -->
                         <div style="margin-bottom: 1rem;">
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
@@ -39,7 +39,7 @@
                         </div>
 
                         <!-- Gallery Grid -->
-                        <div id="mediaGalleryGrid" class="grid grid-cols-4 gap-4 max-h-96 overflow-y-auto mb-4">
+                        <div id="mediaGalleryGrid" class="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 gap-3 max-h-[500px] overflow-y-auto mb-4">
                             <!-- Images will be loaded here -->
                         </div>
 
@@ -79,6 +79,14 @@ window.currentProductId = null;
 window.selectedMediaIds = new Set();
 window.currentPage = 1;
 window.searchQuery = '';
+// Target field config (default)
+window.galleryTargetField = 'data.image';       // Livewire state path
+window.galleryTargetInputName = 'image';        // Input name for sync
+
+window.setGalleryTarget = function(field = 'data.image', inputName = 'image') {
+    window.galleryTargetField = field;
+    window.galleryTargetInputName = inputName;
+};
 
 window.openMediaGallery = function(productId) {
     if (!productId) {
@@ -146,11 +154,14 @@ window.loadMediaGallery = function(page = 1) {
     });
 };
 
+window.mediaItemsMap = {};
+
 window.renderMediaGrid = function(mediaItems) {
     const grid = document.getElementById('mediaGalleryGrid');
     if (!grid) return;
     
     grid.innerHTML = '';
+    window.mediaItemsMap = {};
     
     if (mediaItems.length === 0) {
         grid.innerHTML = '<div class="col-span-4 text-center text-gray-500 py-8">Không có ảnh nào</div>';
@@ -158,6 +169,7 @@ window.renderMediaGrid = function(mediaItems) {
     }
     
     mediaItems.forEach(item => {
+        window.mediaItemsMap[item.id] = item;
         const isSelected = window.selectedMediaIds.has(item.id);
         const mediaItem = document.createElement('div');
         mediaItem.className = `relative border-2 rounded-lg overflow-hidden ${isSelected ? 'border-primary-500 ring-2 ring-primary-500' : 'border-gray-200'}`;
@@ -257,86 +269,83 @@ window.handleModalAction = function() {
     if (window.thumbnailSelectionMode) {
         // Thumbnail selection mode - return URL to form field
         if (window.selectedMediaIds.size === 0) {
-            alert('Vui lòng chọn 1 ảnh làm hình đại diện!');
+            showToast('Vui lòng chọn 1 ảnh làm hình đại diện!', 'warning');
             return;
         }
         
         const galleryId = Array.from(window.selectedMediaIds)[0];
         
-        // Get gallery URL from the selected item
-        fetch(`/admin/api/galleries?per_page=1000`)
-            .then(response => response.json())
-            .then(data => {
-                const selectedGallery = data.data.find(item => item.id === galleryId);
-                if (selectedGallery && selectedGallery.url) {
-                    // Convert full URL to relative path for storage
-                    // Extract path from full URL (e.g., https://domain.com/storage/... -> /storage/...)
-                    let imagePath = selectedGallery.url;
-                    try {
-                        const url = new URL(selectedGallery.url);
-                        imagePath = url.pathname; // Get /storage/... part
-                    } catch (e) {
-                        // If already a relative path, use as is
-                        if (selectedGallery.url.startsWith('/')) {
-                            imagePath = selectedGallery.url;
-                        } else {
-                            // Assume it's a full URL and extract path
-                            const match = selectedGallery.url.match(/\/(storage\/.+)$/);
-                            if (match) {
-                                imagePath = '/' + match[1];
-                            }
-                        }
-                    }
-                    
-                    // Set relative path to image field using Livewire
-                    const imageField = document.querySelector('input[name="image"]') || 
-                                     document.querySelector('input[wire\\:model*="image"]') ||
-                                     document.querySelector('[name="image"]');
-                    
-                    if (imageField) {
-                        imageField.value = imagePath;
-                        
-                        // Trigger Livewire update
-                        imageField.dispatchEvent(new Event('input', { bubbles: true }));
-                        imageField.dispatchEvent(new Event('change', { bubbles: true }));
-                        
-                        // Also try Livewire way
-                        if (window.Livewire) {
-                            const livewireComponent = window.Livewire.find(imageField.closest('[wire\\:id]')?.getAttribute('wire:id'));
-                            if (livewireComponent) {
-                                livewireComponent.set('data.image', imagePath);
-                            }
-                        }
-                        
-                        // Show preview with full URL
-                        const previewDiv = document.getElementById('selectedThumbnailPreview');
-                        const previewImg = document.getElementById('thumbnailPreviewImage');
-                        if (previewDiv && previewImg) {
-                            previewImg.src = selectedGallery.thumb_url || selectedGallery.url;
-                            previewDiv.classList.remove('hidden');
-                        }
-                    } else {
-                        console.warn('Image field not found, trying alternative method');
-                        // Fallback: try to find by wire:model
-                        const wireInput = document.querySelector('[wire\\:model*="data.image"]');
-                        if (wireInput && window.Livewire) {
-                            const componentId = wireInput.closest('[wire\\:id]')?.getAttribute('wire:id');
-                            if (componentId) {
-                                window.Livewire.find(componentId).set('data.image', imagePath);
-                            }
-                        }
-                    }
-                    
-                    window.closeMediaGallery();
-                    alert('Đã chọn hình đại diện!');
+        // Get gallery URL from the selected item (ưu tiên dữ liệu đã load sẵn)
+        const selectedGallery =
+            (window.mediaItemsMap && window.mediaItemsMap[galleryId]) ? window.mediaItemsMap[galleryId] : null;
+
+        const applySelection = (selected) => {
+            if (!selected || !selected.url) {
+                showToast('Không tìm thấy URL ảnh!', 'error');
+                return;
+            }
+
+            // Convert full URL to relative path for storage
+            let imagePath = selected.url;
+            try {
+                const url = new URL(selected.url);
+                imagePath = url.pathname; // /storage/...
+            } catch (e) {
+                if (selected.url.startsWith('/')) {
+                    imagePath = selected.url;
                 } else {
-                    alert('Không tìm thấy URL ảnh!');
+                    const match = selected.url.match(/\/(storage\/.+)$/);
+                    if (match) imagePath = '/' + match[1];
                 }
-            })
-            .catch(error => {
-                console.error('Error getting gallery URL:', error);
-                alert('Có lỗi xảy ra khi lấy URL ảnh!');
-            });
+            }
+
+            const targetLivewireField = window.galleryTargetField || 'data.image';
+            const targetInputName = window.galleryTargetInputName || 'image';
+
+            // Tìm form component (tránh nhầm với global-search/topbar components)
+            const formElement = document.querySelector('form[wire\\:submit]');
+            const formComponent = formElement ? formElement.closest('[wire\\:id]') : null;
+            
+            // Set Livewire state nếu có form component
+            if (window.Livewire && formComponent) {
+                const componentId = formComponent.getAttribute('wire:id');
+                try {
+                    window.Livewire.find(componentId)?.set(targetLivewireField, imagePath);
+                    console.log('✅ Set', targetLivewireField, 'to:', imagePath);
+                } catch (e) {
+                    console.error('❌ Could not set Livewire field:', targetLivewireField, e);
+                }
+            }
+
+            // Sync input nếu có (theo target input name)
+            const nameInput = document.querySelector(`input[name=\"${targetInputName}\"], input[name=\"data.${targetInputName}\"], input[name=\"data[${targetInputName}]\"], input[name=\"${targetLivewireField}\"]`);
+            if (nameInput) {
+                nameInput.value = imagePath;
+                nameInput.dispatchEvent(new Event('input', { bubbles: true }));
+                nameInput.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+            // Dispatch event cho Alpine preview component
+            window.dispatchEvent(new CustomEvent('gallery-image-selected', { detail: { path: imagePath, id: galleryId, target: targetLivewireField } }));
+
+            window.closeMediaGallery();
+            
+            // Show success toast
+            showToast('Đã chọn hình đại diện!', 'success');
+        };
+
+        if (selectedGallery) {
+            applySelection(selectedGallery);
+        } else {
+            // Fallback fetch if map không có (hiếm)
+            fetch(`/admin/api/galleries/${galleryId}`)
+                .then(resp => resp.json())
+                .then(selected => applySelection(selected))
+                .catch(error => {
+                    console.error('Error getting gallery URL:', error);
+                    alert('Có lỗi xảy ra khi lấy URL ảnh!');
+                });
+        }
     } else {
         // Gallery mode - attach to product via gallery_entity table
         if (window.selectedMediaIds.size === 0) {
@@ -367,16 +376,16 @@ window.handleModalAction = function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert(data.message);
+                showToast(data.message, 'success');
                 window.closeMediaGallery();
                 window.location.reload();
             } else {
-                alert('Có lỗi xảy ra: ' + (data.message || 'Unknown error'));
+                showToast('Có lỗi xảy ra: ' + (data.message || 'Unknown error'), 'error');
             }
         })
         .catch(error => {
             console.error('Error attaching galleries:', error);
-            alert('Có lỗi xảy ra khi thêm ảnh!');
+            showToast('Có lỗi xảy ra khi thêm ảnh!', 'error');
         });
     }
 };
@@ -449,7 +458,7 @@ window.openMediaGalleryForThumbnail = function() {
         const title = modal.querySelector('#modal-title');
         const actionBtnText = document.getElementById('modalActionButtonText');
         if (title) title.textContent = 'Chọn hình đại diện từ Gallery';
-        if (actionBtnText) actionBtnText.textContent = 'Chọn làm hình đại diện';
+        if (actionBtnText) actionBtnText.textContent = 'Chọn';
         
         modal.classList.remove('hidden');
         const searchInput = document.getElementById('mediaSearchInput');
@@ -609,13 +618,13 @@ window.handleGalleryUpload = function(files) {
     .then(data => {
         if (data.success) {
             const message = data.message || `Đã upload thành công ${data.data.length} ảnh!`;
-            alert(message);
+            showToast(message, 'success');
             // Reload gallery to show new images
             window.loadMediaGallery(1); // Go to first page to see newly uploaded
         } else {
             const errorMsg = data.message || 'Unknown error';
-            const errors = data.errors ? '\nChi tiết: ' + data.errors.join(', ') : '';
-            alert('Có lỗi xảy ra khi upload: ' + errorMsg + errors);
+            const errors = data.errors ? ' Chi tiết: ' + data.errors.join(', ') : '';
+            showToast('Có lỗi xảy ra khi upload: ' + errorMsg + errors, 'error');
             window.loadMediaGallery(window.currentPage || 1);
         }
         
@@ -627,7 +636,7 @@ window.handleGalleryUpload = function(files) {
     })
     .catch(error => {
         console.error('Error uploading:', error);
-        alert('Có lỗi xảy ra khi upload ảnh: ' + error.message);
+        showToast('Có lỗi xảy ra khi upload ảnh: ' + error.message, 'error');
         window.loadMediaGallery(window.currentPage || 1);
         
         // Re-enable upload button
@@ -676,7 +685,7 @@ window.deleteGalleryItem = function(galleryId, buttonElement) {
                 }
             }
         } else {
-            alert('Không thể xóa ảnh: ' + (data.message || 'Unknown error'));
+            showToast('Không thể xóa ảnh: ' + (data.message || 'Unknown error'), 'error');
             if (buttonElement) {
                 buttonElement.disabled = false;
                 buttonElement.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>';
@@ -685,12 +694,38 @@ window.deleteGalleryItem = function(galleryId, buttonElement) {
     })
     .catch(error => {
         console.error('Error deleting gallery:', error);
-        alert('Có lỗi xảy ra khi xóa ảnh!');
+        showToast('Có lỗi xảy ra khi xóa ảnh!', 'error');
         if (buttonElement) {
             buttonElement.disabled = false;
             buttonElement.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>';
         }
     });
+};
+
+// Toast notification function
+window.showToast = function(message, type = 'info') {
+    const toast = document.createElement('div');
+    const bgColors = {
+        success: 'bg-green-500',
+        error: 'bg-red-500',
+        warning: 'bg-yellow-500',
+        info: 'bg-blue-500'
+    };
+    
+    toast.className = `fixed top-4 right-4 ${bgColors[type] || bgColors.info} text-white px-6 py-3 rounded-lg shadow-lg z-[99999] transition-opacity duration-300`;
+    toast.textContent = message;
+    toast.style.opacity = '0';
+    
+    document.body.appendChild(toast);
+    
+    // Fade in
+    setTimeout(() => toast.style.opacity = '1', 10);
+    
+    // Fade out and remove
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => document.body.removeChild(toast), 300);
+    }, 3000);
 };
 </script>
 

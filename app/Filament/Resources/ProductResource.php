@@ -117,41 +117,63 @@ class ProductResource extends Resource
 
                 Forms\Components\Section::make('Hình ảnh')
                     ->schema([
-                        Forms\Components\Placeholder::make('image_selector')
-                            ->label('Hình đại diện')
-                            ->content(new \Illuminate\Support\HtmlString('
-                                <div class="space-y-3">
-                                    <div class="flex items-center gap-3">
-                                        <button type="button" 
-                                                id="selectThumbnailFromGallery"
-                                                class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:border-primary-900 focus:ring ring-primary-300 disabled:opacity-25 transition ease-in-out duration-150">
-                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                            </svg>
-                                            Chọn từ Gallery
-                                        </button>
-                                    </div>
-                                    <div id="selectedThumbnailPreview" class="hidden">
-                                        <div class="relative inline-block">
-                                            <img id="thumbnailPreviewImage" src="" alt="Thumbnail preview" class="w-32 h-32 object-cover rounded-lg border border-gray-300">
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('image')
+                                    ->label('Đường dẫn ảnh')
+                                    ->placeholder('/storage/galleries/xxx.webp')
+                                    ->reactive()
+                                    ->columnSpan(1),
+                                
+                                Forms\Components\Placeholder::make('image_preview')
+                                    ->label('Xem trước')
+                                    ->content(fn ($get) => new \Illuminate\Support\HtmlString('
+                                        <div x-data="{ 
+                                            imagePath: \'' . ($get('image') ?? '') . '\',
+                                            init() {
+                                                // Listen for gallery selection
+                                                window.addEventListener(\'gallery-image-selected\', (e) => {
+                                                    if (e.detail && e.detail.path) {
+                                                        this.imagePath = e.detail.path;
+                                                    }
+                                                });
+                                                // Also watch Livewire state if available
+                                                this.$watch(\'$wire.data.image\', value => {
+                                                    this.imagePath = value || \'\';
+                                                });
+                                            }
+                                        }" class="space-y-2">
                                             <button type="button" 
-                                                    onclick="window.clearSelectedThumbnail && window.clearSelectedThumbnail()"
-                                                    class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600">
-                                                ×
+                                                    onclick="if(window.openMediaGalleryForThumbnail) window.openMediaGalleryForThumbnail(); else alert(\'Gallery chưa sẵn sàng\');"
+                                                    class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 focus:ring ring-primary-300 transition">
+                                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                                </svg>
+                                                Chọn từ Gallery
                                             </button>
+                                            <div class="mt-2">
+                                                <template x-if="imagePath">
+                                                    <div class="relative inline-block">
+                                                        <img :src="imagePath.startsWith(\'/\') ? imagePath : \'/\' + imagePath" 
+                                                             class="w-32 h-32 object-cover rounded-lg border border-gray-300"
+                                                             alt="Preview">
+                                                        <button type="button" 
+                                                                @click="imagePath = \'\'; $wire.set(\'data.image\', \'\');"
+                                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-600 shadow">
+                                                            ×
+                                                        </button>
+                                                    </div>
+                                                </template>
+                                                <template x-if="!imagePath">
+                                                    <div class="w-32 h-32 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-gray-400 text-xs">
+                                                        Chưa có ảnh
+                                                    </div>
+                                                </template>
+                                            </div>
                                         </div>
-                                        <p class="text-xs text-gray-500 mt-2">Ảnh đã chọn</p>
-                                    </div>
-                                </div>
-                            '))
-                            ->columnSpan(1),
-                        
-                        Forms\Components\TextInput::make('image')
-                            ->label('Path hình đại diện')
-                            ->helperText('Path tương đối: /storage/galleries/xxx.webp (tự động điền khi chọn từ Gallery)')
-                            ->reactive()
-                            ->columnSpan(1),
-                        
+                                    '))
+                                    ->columnSpan(1),
+                            ]),
                     ]),
 
                 Forms\Components\Section::make('Danh mục')

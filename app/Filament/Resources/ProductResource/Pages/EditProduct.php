@@ -33,6 +33,9 @@ class EditProduct extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
+        // Log để debug
+        \Log::info('mutateFormDataBeforeSave called', ['data' => $data]);
+        
         // Remove slug fields from product data
         $slugKey = $data['slug_key'] ?? null;
         $slugPrefix = $data['slug_prefix'] ?? null; // Prefix = null cho SEO
@@ -40,6 +43,8 @@ class EditProduct extends EditRecord
         
         // Lưu vào session để dùng sau
         session(['pending_slug_key' => $slugKey, 'pending_slug_prefix' => $slugPrefix]);
+        
+        \Log::info('mutateFormDataBeforeSave returning', ['data' => $data]);
         
         return $data;
     }

@@ -65,7 +65,8 @@ class GalleryController extends Controller
         if ($request->hasFile('file')) {
             // Single file upload (old format for compatibility)
             $request->validate([
-                'file' => 'required|image|max:10240', // 10MB max
+                // Tăng giới hạn lên ~400MB, chỉ nhận ảnh phổ biến
+                'file' => 'required|mimes:jpeg,jpg,png,webp|max:409600',
                 'name' => 'nullable|string|max:255',
             ]);
 
@@ -89,7 +90,8 @@ class GalleryController extends Controller
             // Multiple files upload
             $request->validate([
                 'files' => 'required|array',
-                'files.*' => 'required|image|max:10240', // 10MB max per file
+                // ~400MB mỗi file, chỉ nhận các định dạng ảnh phổ biến
+                'files.*' => 'required|mimes:jpeg,jpg,png,webp|max:409600',
             ]);
 
             $files = $request->file('files');

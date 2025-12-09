@@ -18,3 +18,8 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/healthy', [PageController::class, 'blogHealthy'])->name('healthy');
     Route::get('/recipe', [PageController::class, 'blogRecipe'])->name('recipe');
 });
+
+// Route alias cho Filament authentication nếu cần
+Route::get('/login', function () {
+    return redirect()->route('filament.auth.login');
+})->name('login');

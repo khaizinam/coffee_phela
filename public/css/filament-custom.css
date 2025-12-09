@@ -25,19 +25,87 @@
     background: linear-gradient(180deg, rgb(45, 27, 20) 0%, rgb(26, 16, 13) 100%) !important;
 }
 
-.filament-sidebar-nav-item {
-    color: rgba(255, 255, 255, 0.85) !important;
+/* Sidebar brand/title */
+.filament-sidebar .filament-brand,
+.filament-sidebar-header .filament-brand {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* Sidebar navigation items - Filament v2 classes */
+.fi-sidebar-item,
+.fi-sidebar-nav-item {
+    color: rgba(255, 255, 255, 0.95) !important;
     transition: all 0.2s ease;
 }
 
-.filament-sidebar-nav-item:hover {
+.fi-sidebar-item a,
+.fi-sidebar-nav-item a,
+.fi-sidebar-item-label,
+.fi-sidebar-nav-item-label {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500;
+}
+
+.fi-sidebar-item:hover,
+.fi-sidebar-nav-item:hover {
     background-color: rgba(193, 118, 78, 0.2) !important;
+}
+
+.fi-sidebar-item:hover a,
+.fi-sidebar-nav-item:hover a,
+.fi-sidebar-item:hover .fi-sidebar-item-label,
+.fi-sidebar-nav-item:hover .fi-sidebar-nav-item-label {
     color: #ffffff !important;
 }
 
-.filament-sidebar-nav-item.active {
+/* Active sidebar item */
+.fi-sidebar-item-active,
+.fi-sidebar-nav-item-active,
+.fi-sidebar-item[aria-current="page"] {
     background-color: rgb(193, 118, 78) !important;
+}
+
+.fi-sidebar-item-active a,
+.fi-sidebar-nav-item-active a,
+.fi-sidebar-item-active .fi-sidebar-item-label,
+.fi-sidebar-nav-item-active .fi-sidebar-nav-item-label,
+.fi-sidebar-item[aria-current="page"] a,
+.fi-sidebar-item[aria-current="page"] .fi-sidebar-item-label {
     color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* Sidebar icons */
+.fi-sidebar-item-icon,
+.fi-sidebar-nav-item-icon {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.fi-sidebar-item-active .fi-sidebar-item-icon,
+.fi-sidebar-nav-item-active .fi-sidebar-nav-item-icon {
+    color: #ffffff !important;
+}
+
+/* Sidebar groups */
+.fi-sidebar-group-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+/* Make sure all text in sidebar is visible */
+.filament-sidebar,
+.filament-sidebar * {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.filament-sidebar .text-gray-600,
+.filament-sidebar .text-gray-700,
+.filament-sidebar .text-gray-800,
+.filament-sidebar .text-gray-900 {
+    color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Buttons */

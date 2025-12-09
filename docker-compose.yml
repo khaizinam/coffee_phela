@@ -57,9 +57,12 @@ services:
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      PMA_USER: root
-      PMA_PASSWORD: root
-      MYSQL_ROOT_PASSWORD: root
+      # Không set PMA_USER và PMA_PASSWORD để yêu cầu đăng nhập thủ công
+      # Tắt chế độ single sign-on để bắt buộc đăng nhập
+      PMA_SINGLE_SIGNON: "false"
+      # Bắt buộc đăng nhập
+      PMA_CONTROLUSER: ""
+      PMA_CONTROLPASS: ""
     networks:
       - phela-network
     depends_on:

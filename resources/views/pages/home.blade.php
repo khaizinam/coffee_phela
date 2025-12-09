@@ -421,9 +421,7 @@
         </div>
       </div>
     </div>
-
     <!-- menu display none  -->
-
     <div id="menu-displaynone">
       <div class="row">
         <div class="col-lg-4 menu-item mt-5 py-4">
@@ -551,12 +549,10 @@
         </div>
       </div>
     </div>
-
     <div class="view-more-button">
       <button id="toggle-vm" type="button"
         class="btn btn-button btn-bfr btn-anim btn-lg d-flex mx-auto justify-content-center mt-4">Xem thêm</button>
     </div>
-
   </div>
 </section>
 

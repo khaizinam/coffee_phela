@@ -18,3 +18,4 @@ yarn.lock
 /.idea
 /.vscode
 copy-manifest.js
+composer.lock

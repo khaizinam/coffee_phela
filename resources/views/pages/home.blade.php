@@ -53,7 +53,7 @@
   </section>
 </div>
 
-<section id="welcome-info">
+<!-- <section id="welcome-info">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-2 col-md-6 col-sm-6 p-0">
@@ -70,13 +70,13 @@
             <span class="menu-item-price align-self-end">20$</span>
           </div>
           <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
             <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
             <span class="menu-item-price align-self-end">20$</span>
           </div>
           <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
             <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
             <span class="menu-item-price align-self-end">20$</span>
@@ -102,7 +102,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 @include('partials.modal')
 
@@ -113,46 +113,36 @@
     <div class="row text-center">
       <div class="col-sm animate">
         <img src="/img/new/cafe-1.webp" class="offer-image" alt="We offer">
-        <h3 class="heading py-3">Cà phê</h3>
-        <p class=" welcome-txt text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
-          est vel ipsa! Maiores!</p>
+        <h3 class="heading py-3">COFFEE</h3>
       </div>
       <div class="col-sm col-lg col-sm-6 animate">
         <img src="/img/new/syphon-1.webp" class="offer-image" alt="We offer">
-        <h3 class="heading py-3">Syphon</h3>
-        <p class=" welcome-txt  text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
-          est vel ipsa! Maiores!</p>
+        <h3 class="heading py-3">SYPHON</h3>
       </div>
       <div class="col-sm col-lg col-sm-6 animate ">
-        <img src="img/offer3.jpg" class="offer-image" alt="We offer">
-        <h3 class="heading py-3">Súp</h3>
-        <p class=" welcome-txt text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
-          est vel ipsa! Maiores!</p>
+        <img src="/img/new/frank-press.webp" class="offer-image" alt="We offer">
+        <h3 class="heading py-3">FRENCH PRESS</h3>
       </div>
       <div class="col-sm col-lg col-sm-6 animate">
-        <img src="img/gallery-food-7-c.jpg" class="offer-image" alt="We offer">
-        <h3 class="heading py-3">Bánh ngọt</h3>
-        <p class=" welcome-txt text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
-          est vel ipsa! Maiores!</p>
+        <img src="/img/new/cold_brew.webp" class="offer-image" alt="We offer">
+        <h3 class="heading py-3">COLD BREW</h3>
       </div>
       <div class="col-sm col-lg col-sm-6 d-sm-none d-lg-block animate">
-        <img src="img/icecoffee-1-c.jpg" class="offer-image " alt="We offer">
-        <h3 class="heading py-3">Ice-coffee</h3>
-        <p class=" welcome-txt text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
-          est vel ipsa! Maiores!</p>
+        <img src="/img/new/o_long_matcha.webp" class="offer-image " alt="We offer">
+        <h3 class="heading py-3">Ô LONG MATCHA</h3>
       </div>
     </div>
   </div>
 </section>
 
 <section id="tea">
-  <div class="tea-image d-flex flex-column justify-content-center align-items-center">
-    <h1 class="heading  text-center text-white">Trà</h1>
-    <h6 class="tea-text text-center pt-2 pb-5">~ Đặc biệt hôm nay ~</h6>
+  <div class="tea-image d-flex flex-column justify-content-center align-items-center" style="background:linear-gradient(rgb(59, 59, 59,.3),rgb(59, 59, 59,.3)),url(/img/new/banner_home-2.webp) center/cover fixed no-repeat;">
+    <h1 class="heading  text-center text-white">Phê la</h1>
+    <h6 class="tea-text text-center pt-2 pb-5">~ Chuyển mùa có len ~</h6>
   </div>
 </section>
 
-<section id="buddha">
+<!-- <section id="buddha">
   <div class="container">
     <div class="row pb-5">
       <div class="col-lg-3 col-md-3 col-sm-3 animate d-flex align-items-center buddha-img">
@@ -230,217 +220,203 @@
     </div>
     <img src="img/buddha-bottom.jpg" class="buddha-bottom-image w-100 d-block" alt="bottom-img">
   </div>
-</section>
+</section> -->
 
 <section id="menu" style="background-color: #f0f0f0; padding: 50px 0 !important;">
   <div class="container">
-    <h4 class="heading heading-line animate text-center">Thực đơn</h4>
+    <h4 class="heading heading-line animate text-center">Sản phẩm</h4>
     <h6 class="welcome-info-h6 animate text-center font-weight-bold pt-0 pt-sm-2">~ Đặc biệt hôm nay ~</h6>
     <div class="row">
-      <div class="col-lg-4 menu-item  mt-5">
+      <div class="col-lg-4 menu-item  mt-5 py-4">
         <h3 class="heading"><u>Cà phê</u></h3>
         <div class="menu-item-content">
-          <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">PHÊ XỈU VANI</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">(Có sẵn Thạch) Vị chua nhẹ tự nhiên của hạt Arabica Lạc Dương...</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">PHÊ ESPRESSO (Hạt Colom, Ethi)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">PHÊ ESPRESSO (Hạt Ro, Ara)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">PHÊ LATTE (Hạt Colom, Ethi)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">PHÊ LATTE (Hạt Ro, Ara)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">PHÊ CAPPU (Hạt Ro, Ara)</h3>
+          </div>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">PHÊ AME (Hạt Ro, Ara)</h3>
+          </div>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">PHÊ AME (Hạt Colom, Ethi)</h3>
+          </div>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">PHÊ NÂU</h3>
+          </div>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">PHÊ ĐEN</h3>
+          </div>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">PHÊ ĐEN</h3>
+          </div>
 
-          <h3 class="heading pt-5"><u>Branç</u></h3>
+          <h3 class="heading pt-3"><u>SYPHON</u></h3>
           <div class="menu-item-content">
-            <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">Mật Nhãn - Ô Long Long Nhãn Sữa</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">Phong Lan (size La)</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">Ô Long Nhài Sữa (size La)</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">Ô Long Sữa Phê La (size La)</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+              data-target="#modalbox">
+              <h3 class="menu-title ">Phong Lan (Ô Long Vani Sữa)</h3>
+            </div>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+              data-target="#modalbox">
+              <h3 class="menu-title ">Ô LONG SỮA PHÊ LA</h3>
+            </div>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+              data-target="#modalbox">
+              <h3 class="menu-title ">Ô LONG NHÀI SỮA</h3>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 menu-item mt-5">
-        <h3 class="heading"><u>Bánh ngọt</u></h3>
+      <div class="col-lg-4 menu-item mt-5 py-4">
+        <h3 class="heading"><u>FRENCH PRESS</u></h3>
         <div class="menu-item-content">
-          <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">LỤA ĐÀO - Phiên bản Đồng Chill yêu thích (size La)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">Phiên bản kèm Đào Hồng Dầm và Thạch Trà Đào Hồng. Trà Ô Long Lụa Đào thơm hoa ngọt ngào, kết hợp cùng Sữa Tươi Thanh Trùng</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">LỤA ĐÀO - Phiên bản Đồng Chill yêu thích (size Phê)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">Phiên bản kèm Đào Hồng Dầm và Thạch Trà Đào Hồng. Trà Ô Long Lụa Đào thơm hoa ngọt ngào, kết hợp cùng Sữa Tươi Thanh Trùng</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">Trà Vỏ Cà Phê (size La)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">Trà Vỏ Cà Phê - thức uống độc đáo được làm từ vỏ quả cà phê, hương trà thơm nhẹ hòa quyện cùng vị chua dịu của chanh vàng.</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">Ô LONG ĐÀO HỒNG (Size La)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">Phiên bản kèm Đào Hồng Dầm và Thạch Trà Đào Hồng. Trà Ô Long Đào Hồng thanh mát, vị trà nhẹ nhàng, thơm đào ngọt ngào,</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">Gấm (size La)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+          <p class="menu-description">Gấm sự kết hợp giữa Trà Ô Long Vải thơm mát cùng với trái vải căng mọng, đem đến dư vị ngọt mát và thanh khiết.</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">GẤM</h3>
+          </div>
+          <p class="menu-description">Gấm - Vị trà Ô Long hòa quyện cùng trái vải căng mọng, mang đến dư vị ngọt mát và thanh khiết giải nhiệt tuyệt vời cho ngày hè.</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+            data-target="#modalbox">
+            <h3 class="menu-title ">TRÀ VỎ CÀ PHÊ</h3>
+          </div>
+          <p class="menu-description">Trà Vỏ Cà Phê được ủ từ vỏ cà phê, hương trà thơm nhẹ hoà quyện cùng vị chua dịu của chanh vàng.</p>
 
-          <h3 class="heading pt-5"><u>Bữa trưa</u></h3>
+          <h3 class="heading pt-5"><u>MOKA POT</u></h3>
           <div class="menu-item-content">
-            <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">Tấm (size La)</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Trà Ô Long đậm đà kết hợp hài hoà với gạo rang thơm bùi.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">Khói B'Lao (size La)</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Sự hoà quyện của các tầng hương: Nốt hương đầu là khói đậm, hương giữa là khói nhẹ & đọng lại ở hậu vị là hương hoa ngọc lan.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">KHÓI B'LAO</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Khói B'Lao sự hoà quyện của các tầng hương: Nốt hương đầu là khói đậm, hương giữa là khói nhẹ & đọng lại ở hậu vị là hương hoa ngọc lan.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">TẤM</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <p class="menu-description">Tấm là sự kết hợp hoàn hảo giữa vị đậm đà của trà Ô Long và hương thơm bùi của gạo rang nguyên chất, mang đến thức uống độc đáo và đầy hấp dẫn.</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 menu-item mt-5">
-        <h3 class="heading"><u>Şirniyyatlar</u></h3>
+      <div class="col-lg-4 menu-item mt-5 py-4">
+        <h3 class="heading"><u>COLD BREW</u></h3>
         <div class="menu-item-content">
-          <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">SỮA CHUA BÒNG BƯỞI</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">(Có sẵn Thạch Trà Chanh Vàng) Sữa Chua Ô Long đá xay sáng tạo cùng nền trà Cold Brew, vị Bưởi the the, thêm Chanh Vàng tươi mát. Sản phẩm có thể bị tan với khoảng cách xa trên 3,5km.</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">BÒNG BƯỞI - Ô LONG BƯỞI NHA ĐAM</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">Trà Ô Long Đặc Sản kết hợp cùng vị Bưởi the mát, thêm Vỏ Bưởi sấy và Nha Đam giòn dai sần sật, mang đến hương vị thanh mát & nhẹ nhàng.</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">Lang Biang (size La)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">Lang Biang hương vị thuần khiết của trà Ô Long Đặc Sản cùng mứt hoa nhài thơm nhẹ.</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">SI MƠ - COLD BREW Ô LONG MƠ ĐÀO (size La)</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-          <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+          <p class="menu-description">Trà Ô Long Đặc Sản ủ lạnh, kết hợp cùng Mơ Má Đào và Đào Hồng dầm, thêm Thạch Trà Vỏ mềm dai mang đến hương vị thanh mát & nhẹ nhàng</p>
+          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
             data-target="#modalbox">
-            <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-            <span class="menu-item-price align-self-end">20$</span>
+            <h3 class="menu-title ">LANG BIANG</h3>
           </div>
-          <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+          <p class="menu-description">Lang Biang với hương vị thuần khiết của trà Ô Long Đặc Sản cùng mứt hoa nhài thơm nhẹ.</p>
 
-          <h3 class="heading pt-5"><u>İçkilər</u></h3>
+          <h3 class="heading pt-5"><u>Ô LONG MATCHA</u></h3>
           <div class="menu-item-content">
-            <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">MATCHA PHAN XI PĂNG</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Lớp kem Ô Long Matcha kết hợp cùng cốt dừa đá xay mát lạnh, thưởng thức cùng Thạch Ô Long Matcha mềm mượt mang đến trải nghiệm thú vị.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">MATCHA COCO LATTE</h3>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <p class="menu-description">Matcha Coco Latte với Lớp kem Ô Long Matcha bồng bềnh sánh mịn hoà quyện cùng sữa dừa Bến Tre hữu cơ ngọt thơm.</p>
           </div>
         </div>
       </div>
@@ -450,210 +426,126 @@
 
     <div id="menu-displaynone">
       <div class="row">
-        <div class="col-lg-4 menu-item mt-5">
-          <h3 class="heading"><u>Bữa sáng</u></h3>
+        <div class="col-lg-4 menu-item mt-5 py-4">
+          <h3 class="heading"><u>TOPPING</u></h3>
           <div class="menu-item-content">
-            <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">THẠCH TRÀ CHANH VÀNG</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Thạch Trà Chanh Vàng mềm dai, thơm dịu - không chất bảo quản - thủ công sáng tạo từ Trà Cold Brew Ô Long Bưởi & Chanh Vàng. Phù hợp với mọi trà trái cây tại Phê La.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">THẠCH XỈU VANI</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Thạch Xỉu Vani mềm mượt - không chất bảo quản - thủ công sáng tạo từ cà phê Arabica Lạc Dương & Robusta Lâm Hà, kết hợp Vani Tự Nhiên cùng Sữa Dừa. Phù hợp với các sản phẩm Cà Phê Phin & Cà Phê Máy.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">THẠCH TRÀ ĐÀO HỒNG</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Thạch Ô Long Đào Hồng mềm dai - không chất bảo quản - thủ công sáng tạo từ Trà Ô Long Đặc Sản & Đào Hồng Dầm. Phù hợp với tất cả sản phẩm Trà Trái Cây tại Phê La</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">THẠCH Ô LONG MATCHA</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+            <p class="menu-description">Thạch Ô Long Matcha mềm mượt - không chất bảo quản - thủ công sáng tạo từ Trà Ô Long Matcha & Sữa Dừa Bến Tre. Phù hợp với mọi sản phẩm trà sữa và Ô Long Matcha tại Phê La.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
               data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
+              <h3 class="menu-title ">THẠCH TRÀ VỎ</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
             </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <p class="menu-description">Thạch Trà Vỏ mềm dai - không chất bảo quản - thủ công sáng tạo từ Trà Vỏ Cà Phê & Ô Mai Dây gia truyền (Xí Muội). Phù hợp với mọi trà trái cây tại Phê La.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+              data-target="#modalbox">
+              <h3 class="menu-title ">TRÂN CHÂU PHONG LAN</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
+            </div>
+            <p class="menu-description">Trân Châu Phong Lan giòn dai - không chất bảo quản, xen lẫn hạt Vani đen tự nhiên & hương vị nhẹ nhàng. Phù hợp với mọi đồ uống tại Phê La.</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+              data-target="#modalbox">
+              <h3 class="menu-title ">Trân Châu Ô Long</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
+            </div>
+            <p class="menu-description">Trân châu Ô Long: Nguyên liệu: Trà Ô Long Phương thức: Thủ công..</p>
+            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+              data-target="#modalbox">
+              <h3 class="menu-title ">TRÂN CHÂU GẠO RANG</h3>
+              <span class="menu-item-price align-self-end">20.000Đ</span>
+            </div>
+            <p class="menu-description">Trân châu mềm dẻo - vị trà Ô Long hoà quyện cùng gạo rang thơm bùi nhẹ nhàng. Phù hợp thưởng thức cùng trà sữa. Không chất bảo quản. Nguyên bản - thủ công.</p>
 
-            <h3 class="heading pt-5"><u>Branç</u></h3>
+            <h3 class="heading pt-5"><u>PLUS - LON/CHAI</u></h3>
             <div class="menu-item-content">
-              <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">Plus - Mật Nhãn</h3>
+                <span class="menu-item-price align-self-end">20.000Đ</span>
+              </div>
+              <p class="menu-description">Lon 500ml. Trà Ô Long Đặc Sản hoà quyện cùng Long Nhãn ngọt ngào, nốt hương đỗ đen rang thơm bùi. HSD 3 ngày từ NSX. Bảo quản 2-5 độ C. Lắc đều trước khi dùng. Sử dụng trong vòng 24h sau khi mở nắp. Sản phẩm đóng gói theo quy cách tiêu chuẩn, không bao gồm Túi giữ nhiệt Phê La.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+                data-target="#modalbox">
+                <h3 class="menu-title ">PLUS - KHÓI B'LAO</h3>
+                <span class="menu-item-price align-self-end">20.000Đ</span>
+              </div>
+              <p class="menu-description">Lon 500ml. Trà Ô Long đậm đà cùng nốt hương đầu là khói đậm, hương giữa là khói nhẹ & lại ở hậu vị là hương hoa ngọc lan. </p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+                data-target="#modalbox">
+                <h3 class="menu-title ">PLUS - MATCHA COCO LATTE</h3>
+                <span class="menu-item-price align-self-end">20.000Đ</span>
+              </div>
+              <p class="menu-description">Lon 500ml. Trà Ô Long Matcha nhẹ nhàng kết hợp cùng Sữa Dừa Bến Tre hữu cơ ngọt thơm. HSD 3 ngày từ NSX.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
+                data-target="#modalbox">
+                <h3 class="menu-title ">PLUS - LỤA ĐÀO</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <p class="menu-description">(100% đường) Lon 500ml. Trà Ô Long Lụa Đào thơm hoa ngọt ngào, kết hợp cùng Sữa Tươi Thanh Trùng Phê La, kèm Đào Hồng Dầm.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">PLUS - PHONG LAN</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <p class="menu-description">(100% đường) Lon 500ml. Plus - Phong Lan Trà Ô Long Đặc Sản hòa quyện cùng Vani tự nhiên, vị nhẹ nhàng, tinh tế.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">PLUS - COLD BREW</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <p class="menu-description">(Sản phẩm không đường) Chai 500ml. Plus - Cold Brew Trà Ô Long ủ lạnh, hậu vị ngọt và thanh mát.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">PLUS - ĐÀ LẠT</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <p class="menu-description">(100% đường) Chai 250ml. Cà phê Arabica Đà Lạt đậm đà hòa quyện cùng kem whipping thơm ngậy.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">PLUS - ĐỈNH PHÙ VÂN</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 menu-item mt-5">
-          <h3 class="heading"><u>Bữa tối</u></h3>
-          <div class="menu-item-content">
-            <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-
-            <h3 class="heading pt-5"><u>Kem</u></h3>
-            <div class="menu-item-content">
-              <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <p class="menu-description">(100% đường) Chai 250ml. Đỉnh Phù Vân là sự kết hợp tinh tế giữa Trà Ô Long Đỏ đậm đà và kem whipping nhẹ nhàng, tạo nên lớp sánh ngậy</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">PLUS - TẤM</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <p class="menu-description">Lon 500ml. Trà Ô Long đậm đà kết hợp hài hoà với gạo rang thơm bùi.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">PLUS - Ô LONG NHÀI SỮA</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
+              <p class="menu-description"> Lon 500ml. Ô Long Nhài Sữa là sự kết hợp Trà Ô Long đậm đà cùng hương nhài thơm tinh tế, thêm chút thơm ngậy từ sữa.</p>
+              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
                 data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
+                <h3 class="menu-title ">PLUS - Ô LONG SỮA PHÊ LA</h3>
                 <span class="menu-item-price align-self-end">20$</span>
               </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 menu-item mt-5">
-          <h3 class="heading"><u>Şirniyyatlar</u></h3>
-          <div class="menu-item-content">
-            <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-            <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-              <span class="menu-item-price align-self-end">20$</span>
-            </div>
-            <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-
-            <h3 class="heading pt-5"><u>İçkilər</u></h3>
-            <div class="menu-item-content">
-              <div class="menu-name pt-2 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              <div class="menu-name pt-3 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Lorem ipsum dolor sit amet </h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+              <p class="menu-description">Lon 500ml. Trà Ô Long Đặc Sản đậm đà hòa quyện cùng vị sữa thơm ngậy.</p>
             </div>
           </div>
         </div>

@@ -494,10 +494,16 @@ a {
 
 .menu-title {
     text-transform: capitalize;
+    margin-bottom: 2px;
 }
 
 .menu-description{
     font-size: 14px;
+    margin-bottom: 6px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .menu-name:hover>.menu-title{
@@ -807,8 +813,6 @@ a {
 }
 
 #tea .tea-image{
-    background:linear-gradient(rgb(59, 59, 59,.3),rgb(59, 59, 59,.3)),
-                url(/img/tea-bg.jpg) center/cover fixed no-repeat;
     height: 70vh;
     position: relative;
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="header-body hero-wrap" 
   style="background:linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), 
-  url('{{ asset('img/home-1-slider-image-1.jpg') }}') bottom center/cover no-repeat;">
+  url('{{ asset('img/new/product_banner.webp') }}') bottom center/cover no-repeat;">
   @include('partials.header')
   
   <header class="header-wrap">

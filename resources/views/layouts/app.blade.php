@@ -42,6 +42,8 @@
   
   <!-- owl carousel  -->
   <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+  <!-- magnific popup  -->
+  <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
   <!-- google fonts Libre+Baskerville, Open+Sans, Varela+Round, Kaushan+Script -->
   <link
     href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Open+Sans|Varela+Round|Handlee|Kaushan+Script&display=swap"

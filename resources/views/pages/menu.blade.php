@@ -3,15 +3,14 @@
 @section('content')
 <div class="header-body hero-wrap" 
   style="background:linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), 
-  url('{{ asset('img/new/product_banner.webp') }}') bottom center/cover no-repeat;">
+  url('{{ $page->banner_image_url }}') bottom center/cover no-repeat;">
   @include('partials.header')
-
   <header class="header-wrap">
     <div class="container-fluid">
-      <div class="row  ">
+      <div class="row">
         <div class="col-md-12">
           <div class="header-wrap__text">
-            <h1 class="bread">Sản phẩm</h1>
+            <h1 class="bread">{{ $page->name }}</h1>
             <h2 class="text-center no-wrap">Phê la</h2>
           </div>
         </div>
@@ -60,6 +59,10 @@
     </div> -->
   </div>
 </section>
+
+@php
+  $categories = app_get_categories();
+@endphp
 
 @if(isset($categories) && $categories->count() > 0)
   @foreach($categories as $category)

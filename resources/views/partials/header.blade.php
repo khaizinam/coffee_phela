@@ -17,17 +17,17 @@
   <div class="collapse navbar-collapse order-lg-2 justify-content-center" id="myNavbar">
     <ul class="navbar-nav">
       <li class="nav-item ">
-        <a href="{{ route('home') }}" class="nav-link text-capitalize {{ request()->routeIs('home') ? 'active' : '' }}">Trang chủ</a>
+        <a href="{{ route('home') }}" class="nav-link text-capitalize">Trang chủ</a>
       </li>
       <li class="nav-item ">
-        <a href="{{ route('menu') }}" class="nav-link text-capitalize {{ request()->routeIs('menu') ? 'active' : '' }}">Sản phẩm</a>
+        <a href="{{ route('page.show', 'san-pham') }}" class="nav-link text-capitalize">Sản phẩm</a>
       </li>
       <li class="nav-item ">
-        <a href="{{ route('gallery.index') }}" class="nav-link text-capitalize {{ request()->routeIs('gallery.index') ? 'active' : '' }}">Ảnh</a>
+        <a href="{{ route('gallery.index') }}" class="nav-link text-capitalize">Ảnh</a>
       </li>
       <li class="nav-item">
         <div class="dropdown">
-          <a class="dropdown-toggle nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}" href="{{ route('blog.healthy') }}" role="button" id="dropdownMenuLink"
+          <a class="dropdown-toggle nav-link" href="{{ route('blog.healthy') }}" role="button" id="dropdownMenuLink"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Blog
           </a>
@@ -39,10 +39,10 @@
         </div>
       </li>
       <li class="nav-item">
-        <a href="{{ route('about') }}" class="nav-link text-capitalize {{ request()->routeIs('about') ? 'active' : '' }}">Giới thiệu</a>
+        <a href="{{ route('about') }}" class="nav-link text-capitalize">Giới thiệu</a>
       </li>
       <li class="nav-item">
-        <a href="{{ route('contact') }}" class="nav-link text-capitalize {{ request()->routeIs('contact') ? 'active' : '' }}">Liên hệ</a>
+        <a href="{{ route('contact') }}" class="nav-link text-capitalize">Liên hệ</a>
       </li>
     </ul>
   </div>

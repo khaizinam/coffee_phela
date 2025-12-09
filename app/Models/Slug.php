@@ -50,7 +50,13 @@ class Slug extends Model
             return null;
         }
 
-        $modelClass = 'App\\Models\\' . $slug->entity;
+        // Entity có thể là full class name (App\Models\Page) hoặc short name (Page)
+        $modelClass = $slug->entity;
+        
+        // Nếu không phải full class name, thử thêm namespace
+        if (!class_exists($modelClass) && !str_contains($modelClass, '\\')) {
+            $modelClass = 'App\\Models\\' . $modelClass;
+        }
         
         if (!class_exists($modelClass)) {
             return null;
@@ -64,7 +70,13 @@ class Slug extends Model
      */
     public function getEntity()
     {
-        $modelClass = 'App\\Models\\' . $this->entity;
+        // Entity có thể là full class name (App\Models\Page) hoặc short name (Page)
+        $modelClass = $this->entity;
+        
+        // Nếu không phải full class name, thử thêm namespace
+        if (!class_exists($modelClass) && !str_contains($modelClass, '\\')) {
+            $modelClass = 'App\\Models\\' . $modelClass;
+        }
         
         if (!class_exists($modelClass)) {
             return null;
@@ -98,7 +110,13 @@ class Slug extends Model
      */
     public function entity()
     {
-        $modelClass = 'App\\Models\\' . $this->entity;
+        // Entity có thể là full class name (App\Models\Page) hoặc short name (Page)
+        $modelClass = $this->entity;
+        
+        // Nếu không phải full class name, thử thêm namespace
+        if (!class_exists($modelClass) && !str_contains($modelClass, '\\')) {
+            $modelClass = 'App\\Models\\' . $modelClass;
+        }
         
         if (!class_exists($modelClass)) {
             return null;

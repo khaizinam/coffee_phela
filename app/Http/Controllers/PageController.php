@@ -60,30 +60,6 @@ class PageController extends Controller
         return view('pages.home', compact('seo', 'categories', 'hiddenCategories'));
     }
 
-    public function menu()
-    {
-        $seo = [
-            'title' => 'Thực đơn - Phela | Cà phê, Trà & Đặc sản',
-            'description' => 'Khám phá thực đơn đa dạng của Phela: cà phê, trà, bánh ngọt, bữa sáng, bữa trưa và đồ uống. Nốt hương đặc sản Việt Nam.',
-            'keywords' => 'thực đơn Phela, cà phê, trà, bánh ngọt, bữa sáng, bữa trưa, đồ uống, menu Phela',
-            'og_title' => 'Thực đơn - Phela',
-            'og_description' => 'Khám phá thực đơn đa dạng của Phela: cà phê, trà, bánh ngọt và đặc sản Việt Nam.',
-            'og_image' => asset('img/new/logo-phela.png'),
-            'og_url' => route('menu'),
-            'canonical' => route('menu'),
-        ];
-
-        // Lấy tất cả categories có status = active và sắp xếp theo sort_order
-        $categories = \App\Models\Category::where('status', 'active')
-            ->with(['products' => function ($query) {
-                $query->where('status', 'published')->orderBy('id');
-            }])
-            ->orderBy('sort_order')
-            ->get();
-
-        return view('pages.menu', compact('seo', 'categories'));
-    }
-
     public function about()
     {
         $seo = [
@@ -178,7 +154,72 @@ class PageController extends Controller
             'canonical' => route('gallery.index'),
         ];
 
-        return view('pages.gallery', compact('seo'));
+        // Lấy tất cả categories có status = active với slug
+        $categories = \App\Models\Category::where('status', 'active')
+            ->with('slug')
+            ->orderBy('sort_order')
+            ->get();
+
+        // Lấy tất cả products có status = published và có images (gallery hoặc thumbnail)
+        $products = \App\Models\Product::where('status', 'published')
+            ->with(['categories.slug', 'media'])
+            ->get()
+            ->filter(function ($product) {
+                // Lấy products có gallery images hoặc thumbnail images
+                $hasGallery = $product->getMedia('gallery')->count() > 0;
+                $hasThumbnail = $product->getMedia('thumbnail')->count() > 0;
+                return $hasGallery || $hasThumbnail;
+            });
+
+        // Tạo mảng gallery items từ products
+        $galleryItems = [];
+        foreach ($products as $product) {
+            // Lấy category slug keys (chung cho tất cả images của product)
+            $categorySlugs = [];
+            foreach ($product->categories as $category) {
+                // Lấy slug từ relationship slug()
+                $slugModel = $category->slug()->first();
+                if ($slugModel && $slugModel->key) {
+                    $categorySlugs[] = $slugModel->key;
+                } else {
+                    // Fallback: tạo slug từ name nếu không có slug trong database
+                    $categorySlugs[] = \Illuminate\Support\Str::slug($category->name);
+                }
+            }
+
+            // Nếu không có category, bỏ qua product này
+            if (empty($categorySlugs)) {
+                continue;
+            }
+
+            // Lấy gallery images
+            $galleryImages = $product->getMedia('gallery');
+            foreach ($galleryImages as $image) {
+                $galleryItems[] = [
+                    'id' => $product->id,
+                    'image_url' => $image->getUrl(),
+                    'image_name' => $image->name ?? $product->name,
+                    'product_name' => $product->name,
+                    'categories' => $categorySlugs,
+                ];
+            }
+
+            // Nếu không có gallery images, lấy thumbnail image
+            if ($galleryImages->isEmpty()) {
+                $thumbnailImage = $product->getMedia('thumbnail')->first();
+                if ($thumbnailImage) {
+                    $galleryItems[] = [
+                        'id' => $product->id,
+                        'image_url' => $thumbnailImage->getUrl(),
+                        'image_name' => $thumbnailImage->name ?? $product->name,
+                        'product_name' => $product->name,
+                        'categories' => $categorySlugs,
+                    ];
+                }
+            }
+        }
+
+        return view('pages.gallery', compact('seo', 'categories', 'galleryItems'));
     }
 
     public function blogHealthy()
@@ -367,6 +408,70 @@ class PageController extends Controller
         ];
 
         return view('pages.stores', compact('allStores', 'stores', 'seo'));
+    }
+
+    /**
+     * Show dynamic page by slug
+     * Route này phải được đặt cuối cùng trong web.php để tránh conflict với các route khác
+     */
+    public function showPage($any)
+    {
+        // Kiểm tra xem có phải là route đã được định nghĩa không (tránh conflict)
+        $excludedRoutes = ['admin', 'api', 'gallery', 'blog', 'login'];
+        $firstSegment = explode('/', trim($any, '/'))[0];
+        
+        if (in_array($firstSegment, $excludedRoutes)) {
+            abort(404);
+        }
+
+        // Chỉ lấy slug cuối cùng (nếu có nested path)
+        $slugKey = basename($any);
+
+        // Tìm page theo slug key với prefix = null
+        $slugModel = \App\Models\Slug::where('key', $slugKey)
+            ->where('entity', \App\Models\Page::class)
+            ->whereNull('prefix')
+            ->first();
+
+        if (!$slugModel) {
+            abort(404);
+        }
+
+        $page = $slugModel->getEntity();
+        
+        if (!$page || $page->status !== 'active') {
+            abort(404);
+        }
+
+        // Chuẩn bị SEO data từ page
+        $seo = [
+            'title' => $page->meta_title ?? $page->name . ' - Phela',
+            'description' => $page->meta_description ?? 'Trang ' . $page->name . ' của Phela - Nốt Hương Đặc Sản',
+            'keywords' => $page->meta_keywords ?? 'Phela, ' . $page->name,
+            'og_title' => $page->meta_title ?? $page->name,
+            'og_description' => $page->meta_description ?? 'Trang ' . $page->name . ' của Phela',
+            'og_image' => $page->meta_image ? asset('storage/' . $page->meta_image) : asset('img/new/logo-phela.png'),
+            'og_url' => url('/' . $slugKey),
+            'canonical' => url('/' . $slugKey),
+        ];
+
+        // Lấy template từ page hoặc dùng default
+        $template = $page->template ?? config('page-templates.default', 'dynamic');
+        
+        // Kiểm tra template có tồn tại trong config không
+        $templates = config('page-templates.templates', []);
+        if (!isset($templates[$template])) {
+            $template = config('page-templates.default', 'dynamic');
+        }
+        
+        // Lấy view path từ config
+        $viewName = $templates[$template]['view'] ?? 'pages.dynamic';
+        
+        // Chuẩn bị data để truyền vào view
+        $data = compact('page', 'seo');
+        
+        // Trả về view với template tương ứng
+        return view($viewName, $data);
     }
 }
 

@@ -117,18 +117,59 @@ class ProductResource extends Resource
 
                 Forms\Components\Section::make('Hình ảnh')
                     ->schema([
-                        SpatieMediaLibraryFileUpload::make('thumbnail')
-                            ->label('Upload hình đại diện')
-                            ->collection('thumbnail')
-                            ->image()
-                            ->helperText('Upload hình đại diện sản phẩm'),
+                        Forms\Components\Placeholder::make('gallery_button_info')
+                            ->label('')
+                            ->content(new \Illuminate\Support\HtmlString('
+                                <div class="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                    <button type="button" 
+                                            id="openGalleryBtn"
+                                            onclick="if(window.openMediaGallery) { window.openMediaGallery(window.currentProductIdForGallery || null); } else { alert(\'Gallery chưa sẵn sàng. Vui lòng refresh trang.\'); } return false;"
+                                            class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:border-primary-900 focus:ring ring-primary-300 disabled:opacity-25 transition ease-in-out duration-150">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        Chọn ảnh từ Gallery
+                                    </button>
+                                    <p class="mt-2 text-sm text-gray-600">Chọn ảnh từ thư viện ảnh đã có sẵn để thêm vào gallery sản phẩm</p>
+                                </div>
+                            '))
+                            ->columnSpanFull(),
                         
-                        SpatieMediaLibraryFileUpload::make('gallery')
-                            ->label('Thư viện ảnh (Gallery)')
-                            ->collection('gallery')
-                            ->multiple()
-                            ->image()
-                            ->helperText('Upload nhiều ảnh cho sản phẩm'),
+                        Forms\Components\Placeholder::make('image_selector')
+                            ->label('Hình đại diện')
+                            ->content(new \Illuminate\Support\HtmlString('
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <button type="button" 
+                                                id="selectThumbnailFromGallery"
+                                                class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:border-primary-900 focus:ring ring-primary-300 disabled:opacity-25 transition ease-in-out duration-150">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                            </svg>
+                                            Chọn từ Gallery
+                                        </button>
+                                    </div>
+                                    <div id="selectedThumbnailPreview" class="hidden">
+                                        <div class="relative inline-block">
+                                            <img id="thumbnailPreviewImage" src="" alt="Thumbnail preview" class="w-32 h-32 object-cover rounded-lg border border-gray-300">
+                                            <button type="button" 
+                                                    onclick="window.clearSelectedThumbnail && window.clearSelectedThumbnail()"
+                                                    class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600">
+                                                ×
+                                            </button>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-2">Ảnh đã chọn</p>
+                                    </div>
+                                </div>
+                            '))
+                            ->columnSpan(1),
+                        
+                        Forms\Components\TextInput::make('image')
+                            ->label('Path hình đại diện')
+                            ->helperText('Path tương đối: /storage/galleries/xxx.webp (tự động điền khi chọn từ Gallery)')
+                            ->reactive()
+                            ->columnSpan(1),
+                        
                     ]),
 
                 Forms\Components\Section::make('Danh mục')
@@ -150,12 +191,12 @@ class ProductResource extends Resource
                     ->label('ID')
                     ->sortable(),
                 
-                Tables\Columns\ImageColumn::make('thumbnail_url')
-                    ->label('Hình')
-                    ->getStateUsing(function (Product $record) {
-                        return $record->thumbnail_url;
-                    })
-                    ->circular(),
+                Tables\Columns\ImageColumn::make('image_url')
+                    ->label('Hình đại diện')
+                    ->getStateUsing(fn ($record) => $record->image_url ?: null)
+                    ->url(fn ($record) => $record->image_url ?: '#')
+                    ->circular()
+                    ->visibleFrom('md'),
                 
                 Tables\Columns\TextColumn::make('name')
                     ->label('Tên sản phẩm')

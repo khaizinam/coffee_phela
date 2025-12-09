@@ -23,6 +23,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Share custom JavaScript to all views
+        view()->composer('layouts.app', function ($view) {
+            $headerScript = \App\Models\CustomJavaScript::active()
+                ->position('header')
+                ->first();
+
+            $bodyStartScript = \App\Models\CustomJavaScript::active()
+                ->position('body_start')
+                ->first();
+
+            $bodyEndScript = \App\Models\CustomJavaScript::active()
+                ->position('body_end')
+                ->first();
+
+            $view->with([
+                'customHeaderScript' => $headerScript,
+                'customBodyStartScript' => $bodyStartScript,
+                'customBodyEndScript' => $bodyEndScript,
+            ]);
+        });
     }
 }

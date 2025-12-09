@@ -63,9 +63,19 @@
   @endif
   
   @stack('styles')
+  
+  {{-- Custom JavaScript in Header --}}
+  @if(isset($customHeaderScript) && $customHeaderScript && $customHeaderScript->code)
+    {!! $customHeaderScript->code !!}
+  @endif
 </head>
 
 <body>
+  {{-- Custom JavaScript at Body Start --}}
+  @if(isset($customBodyStartScript) && $customBodyStartScript && $customBodyStartScript->code)
+    {!! $customBodyStartScript->code !!}
+  @endif
+
   <div class="main-content">
     @yield('content')
   </div>
@@ -89,6 +99,11 @@
   <script src="{{ asset('js/jquery.mb.YTPlayer.min.js') }}"></script>
   <script src="{{ mix('js/app.js') }}"></script>
   @stack('scripts')
+  
+  {{-- Custom JavaScript at Body End --}}
+  @if(isset($customBodyEndScript) && $customBodyEndScript && $customBodyEndScript->code)
+    {!! $customBodyEndScript->code !!}
+  @endif
 </body>
 </html>
 

@@ -193,6 +193,22 @@
         @endforeach
 
         @stack('scripts')
+        
+        {{-- Media Gallery Modal - Load for all admin pages --}}
+        @include('filament.partials.media-gallery-modal')
+        
+        {{-- Set product ID from URL if on edit product page --}}
+        @if(request()->routeIs('filament.resources.products.edit'))
+            <script>
+                // Extract product ID from URL
+                const urlPath = window.location.pathname;
+                const match = urlPath.match(/\/products\/(\d+)\/edit/);
+                if (match && match[1]) {
+                    window.currentProductIdForGallery = parseInt(match[1]);
+                    console.log('✅ Product ID extracted from URL:', window.currentProductIdForGallery);
+                }
+            </script>
+        @endif
 
         {{ \Filament\Facades\Filament::renderHook('scripts.end') }}
 

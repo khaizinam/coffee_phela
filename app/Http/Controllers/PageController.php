@@ -119,16 +119,26 @@ class PageController extends Controller
         $product = \App\Models\Product::with('categories')
             ->findOrFail($id);
 
-        // Lấy thumbnail
-        $thumbnail = $product->thumbnail_url;
+        // Lấy thumbnail (returns full URL via accessor)
+        $thumbnail = $product->image_url;
 
-        // Lấy gallery images
-        $galleryImages = $product->getMedia('gallery')->map(function ($media) {
-            return [
-                'url' => $media->getUrl(),
-                'name' => $media->name,
+        // Lấy gallery images từ gallery_entity
+        $galleryImages = [];
+        $productGalleries = $product->getGalleryImages('gallery');
+        foreach ($productGalleries as $gallery) {
+            $galleryImages[] = [
+                'url' => $gallery->full_url,
+                'name' => $gallery->name ?? $gallery->file_name,
             ];
-        });
+        }
+        
+        // Nếu không có gallery, dùng image từ products.image
+        if (empty($galleryImages) && $product->image_url) {
+            $galleryImages[] = [
+                'url' => $product->image_url,
+                'name' => $product->name,
+            ];
+        }
 
         return response()->json([
             'id' => $product->id,
@@ -167,7 +177,7 @@ class PageController extends Controller
             ->filter(function ($product) {
                 // Lấy products có gallery images hoặc thumbnail images
                 $hasGallery = $product->getMedia('gallery')->count() > 0;
-                $hasThumbnail = $product->getMedia('thumbnail')->count() > 0;
+                $hasThumbnail = !empty($product->image); // image column stores relative path
                 return $hasGallery || $hasThumbnail;
             });
 
@@ -204,14 +214,14 @@ class PageController extends Controller
                 ];
             }
 
-            // Nếu không có gallery images, lấy thumbnail image
+            // Nếu không có gallery images, lấy thumbnail image từ cột image
             if ($galleryImages->isEmpty()) {
-                $thumbnailImage = $product->getMedia('thumbnail')->first();
+                $thumbnailImage = $product->image; // Relative path: /storage/...
                 if ($thumbnailImage) {
                     $galleryItems[] = [
                         'id' => $product->id,
-                        'image_url' => $thumbnailImage->getUrl(),
-                        'image_name' => $thumbnailImage->name ?? $product->name,
+                        'image_url' => $product->image_url, // Use accessor to get full URL
+                        'image_name' => $product->name,
                         'product_name' => $product->name,
                         'categories' => $categorySlugs,
                     ];

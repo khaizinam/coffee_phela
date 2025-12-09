@@ -9,12 +9,12 @@ class CustomJavaScript extends Model
 {
     use HasFactory;
 
+    protected $table = 'custom_javascripts';
+
     protected $fillable = [
-        'name',
         'position',
         'code',
         'status',
-        'sort_order',
     ];
 
     /**

@@ -15,11 +15,9 @@ class CreateCustomJavascriptsTable extends Migration
     {
         Schema::create('custom_javascripts', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->comment('Tên script (để dễ quản lý)');
-            $table->enum('position', ['header', 'body_start', 'body_end'])->comment('Vị trí chèn script');
-            $table->text('code')->comment('Mã JavaScript/HTML');
+            $table->enum('position', ['header', 'body_start', 'body_end'])->unique()->comment('Vị trí chèn script (chỉ có 3 vị trí: header, body_start, body_end)');
+            $table->text('code')->nullable()->comment('Mã JavaScript/HTML');
             $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->integer('sort_order')->default(0)->comment('Thứ tự sắp xếp');
             $table->timestamps();
         });
     }

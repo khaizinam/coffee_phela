@@ -61,4 +61,5 @@ class EditProduct extends EditRecord
         
         session()->forget(['pending_slug_key', 'pending_slug_prefix']);
     }
+
 }

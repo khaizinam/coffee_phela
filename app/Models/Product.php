@@ -19,6 +19,7 @@ class Product extends Model implements HasMedia
         'description',
         'content',
         'price',
+        'image',
         'status',
     ];
 
@@ -33,6 +34,32 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(Category::class, 'category_product')
                     ->withTimestamps();
+    }
+
+    /**
+     * Get galleries attached to this product.
+     */
+    public function galleries()
+    {
+        return $this->morphMany(GalleryEntity::class, 'entity')
+                    ->with('gallery')
+                    ->orderBy('sort_order');
+    }
+
+    /**
+     * Get gallery images for specific collection.
+     */
+    public function getGalleryImages(?string $collection = null)
+    {
+        $query = $this->galleries()->whereHas('gallery', function ($q) {
+            $q->where('status', 'active');
+        });
+        
+        if ($collection) {
+            $query->where('collection', $collection);
+        }
+        
+        return $query->get()->pluck('gallery');
     }
 
     /**
@@ -93,12 +120,31 @@ class Product extends Model implements HasMedia
     }
 
     /**
-     * Get thumbnail URL from Media Library.
+     * Get thumbnail/image URL.
+     * Returns image column value (URL from gallery).
      */
     public function getThumbnailUrlAttribute()
     {
-        $media = $this->getFirstMedia('thumbnail');
-        return $media ? $media->getUrl() : null;
+        if (!$this->image) {
+            return null;
+        }
+        
+        // If already full URL, return as is (backward compatibility)
+        if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
+            return $this->image;
+        }
+        
+        // Convert relative path to full URL
+        return asset($this->image);
+    }
+
+    /**
+     * Get image URL attribute (alias for image column).
+     * Returns full URL from relative path stored in database.
+     */
+    public function getImageUrlAttribute()
+    {
+        return $this->thumbnail_url;
     }
 
     /**

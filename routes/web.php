@@ -20,6 +20,13 @@ Route::prefix('blog')->name('blog.')->group(function () {
 // API route để lấy chi tiết sản phẩm
 Route::get('/api/products/{id}', [PageController::class, 'getProductDetail'])->name('api.product.detail');
 
+// API routes cho Gallery
+Route::middleware('auth')->prefix('admin/api')->name('admin.api.')->group(function () {
+    Route::get('/galleries', [\App\Http\Controllers\GalleryController::class, 'index'])->name('galleries.index');
+    Route::post('/galleries/upload', [\App\Http\Controllers\GalleryController::class, 'upload'])->name('galleries.upload');
+    Route::post('/products/{productId}/galleries/attach', [\App\Http\Controllers\ProductGalleryController::class, 'attach'])->name('products.galleries.attach');
+});
+
 // Route alias cho Filament authentication nếu cần
 Route::get('/login', function () {
     return redirect()->route('filament.auth.login');

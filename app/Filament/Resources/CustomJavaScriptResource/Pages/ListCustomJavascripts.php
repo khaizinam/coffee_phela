@@ -6,7 +6,7 @@ use App\Filament\Resources\CustomJavaScriptResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListCustomJavaScripts extends ListRecords
+class ListCustomJavascripts extends ListRecords
 {
     protected static string $resource = CustomJavaScriptResource::class;
 

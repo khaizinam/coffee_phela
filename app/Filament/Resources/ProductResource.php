@@ -128,21 +128,7 @@ class ProductResource extends Resource
                                 Forms\Components\Placeholder::make('image_preview')
                                     ->label('Xem trước')
                                     ->content(fn ($get) => new \Illuminate\Support\HtmlString('
-                                        <div x-data="{ 
-                                            imagePath: \'' . ($get('image') ?? '') . '\',
-                                            init() {
-                                                // Listen for gallery selection
-                                                window.addEventListener(\'gallery-image-selected\', (e) => {
-                                                    if (e.detail && e.detail.path) {
-                                                        this.imagePath = e.detail.path;
-                                                    }
-                                                });
-                                                // Also watch Livewire state if available
-                                                this.$watch(\'$wire.data.image\', value => {
-                                                    this.imagePath = value || \'\';
-                                                });
-                                            }
-                                        }" class="space-y-2">
+                                        <div class="space-y-2">
                                             <button type="button" 
                                                     onclick="if(window.openMediaGalleryForThumbnail) window.openMediaGalleryForThumbnail(); else alert(\'Gallery chưa sẵn sàng\');"
                                                     class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 focus:ring ring-primary-300 transition">
@@ -151,24 +137,10 @@ class ProductResource extends Resource
                                                 </svg>
                                                 Chọn từ Gallery
                                             </button>
-                                            <div class="mt-2">
-                                                <template x-if="imagePath">
-                                                    <div class="relative inline-block">
-                                                        <img :src="imagePath.startsWith(\'/\') ? imagePath : \'/\' + imagePath" 
-                                                             class="w-32 h-32 object-cover rounded-lg border border-gray-300"
-                                                             alt="Preview">
-                                                        <button type="button" 
-                                                                @click="imagePath = \'\'; $wire.set(\'data.image\', \'\');"
-                                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-600 shadow">
-                                                            ×
-                                                        </button>
-                                                    </div>
-                                                </template>
-                                                <template x-if="!imagePath">
-                                                    <div class="w-32 h-32 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-gray-400 text-xs">
-                                                        Chưa có ảnh
-                                                    </div>
-                                                </template>
+                                            <div id="imagePreviewContainer" class="mt-2">
+                                                <img id="imagePreview" src="' . ($get('image') ? url($get('image')) : '') . '" 
+                                                     class="' . ($get('image') ? 'block' : 'hidden') . ' w-32 h-32 object-cover rounded-lg border border-gray-300"
+                                                     alt="Preview">
                                             </div>
                                         </div>
                                     '))

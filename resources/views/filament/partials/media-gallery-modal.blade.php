@@ -79,14 +79,6 @@ window.currentProductId = null;
 window.selectedMediaIds = new Set();
 window.currentPage = 1;
 window.searchQuery = '';
-// Target field config (default)
-window.galleryTargetField = 'data.image';       // Livewire state path
-window.galleryTargetInputName = 'image';        // Input name for sync
-
-window.setGalleryTarget = function(field = 'data.image', inputName = 'image') {
-    window.galleryTargetField = field;
-    window.galleryTargetInputName = inputName;
-};
 
 window.openMediaGallery = function(productId) {
     if (!productId) {
@@ -299,26 +291,25 @@ window.handleModalAction = function() {
                 }
             }
 
-            const targetLivewireField = window.galleryTargetField || 'data.image';
-            const targetInputName = window.galleryTargetInputName || 'image';
-
             // Tìm form component (tránh nhầm với global-search/topbar components)
             const formElement = document.querySelector('form[wire\\:submit]');
             const formComponent = formElement ? formElement.closest('[wire\\:id]') : null;
+            const targetField = window.galleryTargetField || 'data.image';
+            const plainName = targetField.split('.').pop();
+            const nameInput = document.querySelector(`input[name=\"${plainName}\"], input[name=\"data.${plainName}\"], input[name=\"data[${plainName}]\"], input[name=\"${targetField}\"]`);
             
             // Set Livewire state nếu có form component
             if (window.Livewire && formComponent) {
                 const componentId = formComponent.getAttribute('wire:id');
                 try {
-                    window.Livewire.find(componentId)?.set(targetLivewireField, imagePath);
-                    console.log('✅ Set', targetLivewireField, 'to:', imagePath);
+                    window.Livewire.find(componentId)?.set(targetField, imagePath);
+                    console.log('✅ Set', targetField, 'to:', imagePath);
                 } catch (e) {
-                    console.error('❌ Could not set Livewire field:', targetLivewireField, e);
+                    console.error('❌ Could not set Livewire', targetField, ':', e);
                 }
             }
 
-            // Sync input nếu có (theo target input name)
-            const nameInput = document.querySelector(`input[name=\"${targetInputName}\"], input[name=\"data.${targetInputName}\"], input[name=\"data[${targetInputName}]\"], input[name=\"${targetLivewireField}\"]`);
+            // Cập nhật input theo tên field (nếu tìm thấy)
             if (nameInput) {
                 nameInput.value = imagePath;
                 nameInput.dispatchEvent(new Event('input', { bubbles: true }));
@@ -326,7 +317,7 @@ window.handleModalAction = function() {
             }
 
             // Dispatch event cho Alpine preview component
-            window.dispatchEvent(new CustomEvent('gallery-image-selected', { detail: { path: imagePath, id: galleryId, target: targetLivewireField } }));
+            window.dispatchEvent(new CustomEvent('gallery-image-selected', { detail: { path: imagePath, id: galleryId, targetField } }));
 
             window.closeMediaGallery();
             
@@ -393,9 +384,11 @@ window.handleModalAction = function() {
 // Thumbnail selection mode
 window.thumbnailSelectionMode = false;
 window.selectedThumbnailMediaId = null;
+window.galleryTargetField = 'data.image'; // mặc định, có thể ghi đè khi mở modal
 
 // Open gallery for thumbnail selection
-window.openThumbnailGallery = function() {
+window.openThumbnailGallery = function(targetField = 'data.image') {
+    window.galleryTargetField = targetField || 'data.image';
     window.thumbnailSelectionMode = true;
     window.selectedThumbnailMediaId = null;
     
@@ -411,7 +404,7 @@ window.openThumbnailGallery = function() {
     
     if (typeof window.openMediaGallery === 'function') {
         // Open modal in single selection mode for thumbnail
-        window.openMediaGalleryForThumbnail();
+        window.openMediaGalleryForThumbnail(targetField);
     } else {
         alert('Chức năng gallery chưa được load. Vui lòng refresh trang.');
     }
@@ -446,7 +439,8 @@ window.clearSelectedThumbnail = function() {
 };
 
 // Open gallery modal for thumbnail selection (single image)
-window.openMediaGalleryForThumbnail = function() {
+window.openMediaGalleryForThumbnail = function(targetField = 'data.image') {
+    window.galleryTargetField = targetField || 'data.image';
     window.thumbnailSelectionMode = true;
     window.selectedMediaIds.clear();
     window.currentPage = 1;
@@ -458,7 +452,7 @@ window.openMediaGalleryForThumbnail = function() {
         const title = modal.querySelector('#modal-title');
         const actionBtnText = document.getElementById('modalActionButtonText');
         if (title) title.textContent = 'Chọn hình đại diện từ Gallery';
-        if (actionBtnText) actionBtnText.textContent = 'Chọn';
+        if (actionBtnText) actionBtnText.textContent = 'Chọn làm hình đại diện';
         
         modal.classList.remove('hidden');
         const searchInput = document.getElementById('mediaSearchInput');

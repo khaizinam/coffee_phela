@@ -60,22 +60,6 @@ class PageController extends Controller
         return view('pages.home', compact('seo', 'categories', 'hiddenCategories'));
     }
 
-    public function about()
-    {
-        $seo = [
-            'title' => 'Giới thiệu - Phela | Về chúng tôi',
-            'description' => 'Tìm hiểu về Phela - Nốt Hương Đặc Sản. Sứ mệnh đánh thức những nốt hương đặc sản của nông sản Việt Nam. Giá trị Nguyên Bản - Thủ Công.',
-            'keywords' => 'giới thiệu Phela, về Phela, sứ mệnh Phela, nốt hương đặc sản, nguyên bản, thủ công',
-            'og_title' => 'Giới thiệu - Phela',
-            'og_description' => 'Tìm hiểu về Phela - Nốt Hương Đặc Sản và sứ mệnh đánh thức những nốt hương đặc sản của nông sản Việt Nam.',
-            'og_image' => asset('img/new/logo-phela.png'),
-            'og_url' => route('about'),
-            'canonical' => route('about'),
-        ];
-
-        return view('pages.about', compact('seo'));
-    }
-
     public function contact()
     {
         $seo = [

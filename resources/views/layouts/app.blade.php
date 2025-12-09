@@ -52,6 +52,8 @@
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <!-- main css  -->
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+  <!-- AOS animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <!-- scrollreveal > always include in the head  -->
   <script src="https://unpkg.com/scrollreveal@4"></script>
   
@@ -97,7 +99,19 @@
   <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
   <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
   <script src="{{ asset('js/jquery.mb.YTPlayer.min.js') }}"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="{{ mix('js/app.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.AOS) {
+        window.AOS.init({
+          duration: 800,
+          once: false,
+          offset: 120,
+        });
+      }
+    });
+  </script>
   @stack('scripts')
   
   {{-- Custom JavaScript at Body End --}}

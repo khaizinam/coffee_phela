@@ -39,7 +39,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a href="{{ route('about') }}" class="nav-link text-capitalize">Giới thiệu</a>
+        <a href="{{ route('page.show', 'about') }}" class="nav-link text-capitalize">Giới thiệu</a>
       </li>
       <li class="nav-item">
         <a href="{{ route('contact') }}" class="nav-link text-capitalize">Liên hệ</a>

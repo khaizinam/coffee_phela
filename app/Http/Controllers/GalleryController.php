@@ -150,5 +150,33 @@ class GalleryController extends Controller
             ]);
         }
     }
+
+    /**
+     * Delete gallery item (file + record)
+     */
+    public function destroy($id)
+    {
+        try {
+            $gallery = Gallery::findOrFail($id);
+            
+            // Delete using service (will delete file and record)
+            $this->galleryService->delete($gallery);
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Đã xóa ảnh thành công.',
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Gallery delete error: ' . $e->getMessage(), [
+                'gallery_id' => $id,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Không thể xóa ảnh: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
 }
 

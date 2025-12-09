@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/he-thong-cua-hang', [PageController::class, 'stores'])->name('stores');
 
@@ -24,6 +23,7 @@ Route::get('/api/products/{id}', [PageController::class, 'getProductDetail'])->n
 Route::middleware('auth')->prefix('admin/api')->name('admin.api.')->group(function () {
     Route::get('/galleries', [\App\Http\Controllers\GalleryController::class, 'index'])->name('galleries.index');
     Route::post('/galleries/upload', [\App\Http\Controllers\GalleryController::class, 'upload'])->name('galleries.upload');
+    Route::delete('/galleries/{id}', [\App\Http\Controllers\GalleryController::class, 'destroy'])->name('galleries.destroy');
     Route::post('/products/{productId}/galleries/attach', [\App\Http\Controllers\ProductGalleryController::class, 'attach'])->name('products.galleries.attach');
 });
 

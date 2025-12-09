@@ -1,10 +1,19 @@
 // Variables - Biến màu sắc, font, kích thước
 
-// Font families
-$font-title: 'Libre Baskerville', serif;
-$font-paragraph: 'Varela Round', sans-serif;
-$font-banner: 'Kaushan Script', cursive;
-$font-subheading: 'Varela', sans-serif;
+// Font face
+@font-face {
+    font-family: 'K2D';
+    src: url('/fonts/K2D-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Font families (use K2D globally)
+$font-title: 'K2D', sans-serif;
+$font-paragraph: 'K2D', sans-serif;
+$font-banner: 'K2D', sans-serif;
+$font-subheading: 'K2D', sans-serif;
 
 // Colors
 $color-secondary: #cb7152;

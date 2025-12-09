@@ -9,7 +9,7 @@
         <h3 class="heading footer-heading mb-3">VỀ CHÚNG TÔI</h3>
         <ul class="list-unstyled footer-text">
           <li class="mb-2"><a href="#" class="text-decoration-none" style="color: #d8d8d8;">Cửa hàng</a></li>
-          <li class="mb-2"><a href="{{ route('about') }}" class="text-decoration-none" style="color: #d8d8d8;">Về Phê La</a></li>
+          <li class="mb-2"><a href="{{ route('page.show', 'about') }}" class="text-decoration-none" style="color: #d8d8d8;">Về Phê La</a></li>
           <li class="mb-2"><a href="{{ route('stores') }}" class="text-decoration-none" style="color: #d8d8d8;">Hệ thống cửa hàng</a></li>
         </ul>
       </div>

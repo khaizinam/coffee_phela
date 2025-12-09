@@ -224,8 +224,14 @@
     }
 
     .video-hero {
-        background-size: cover !important;
         height: 400px !important;
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
 
     .middle {

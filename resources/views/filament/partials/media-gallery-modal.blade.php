@@ -160,16 +160,26 @@ window.renderMediaGrid = function(mediaItems) {
     mediaItems.forEach(item => {
         const isSelected = window.selectedMediaIds.has(item.id);
         const mediaItem = document.createElement('div');
-        mediaItem.className = `relative cursor-pointer border-2 rounded-lg overflow-hidden ${isSelected ? 'border-primary-500 ring-2 ring-primary-500' : 'border-gray-200'}`;
+        mediaItem.className = `relative border-2 rounded-lg overflow-hidden ${isSelected ? 'border-primary-500 ring-2 ring-primary-500' : 'border-gray-200'}`;
         mediaItem.innerHTML = `
-            <img src="${item.thumb_url || item.url}" 
-                 alt="${item.name}" 
-                 class="w-full h-32 object-cover"
-                 onclick="toggleMediaSelection(${item.id})">
-            <div class="absolute top-1 right-1 ${isSelected ? 'bg-primary-500' : 'bg-gray-400'} rounded-full p-1">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
+            <div class="relative">
+                <img src="${item.thumb_url || item.url}" 
+                     alt="${item.name}" 
+                     class="w-full h-32 object-cover cursor-pointer"
+                     onclick="toggleMediaSelection(${item.id})">
+                <button type="button" 
+                        onclick="event.stopPropagation(); deleteGalleryItem(${item.id}, this)"
+                        class="delete-gallery-btn absolute top-1 left-1 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 opacity-0 transition-opacity z-10"
+                        title="Xóa ảnh">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                </button>
+                <div class="absolute top-1 right-1 ${isSelected ? 'bg-primary-500' : 'bg-gray-400'} rounded-full p-1 cursor-pointer" onclick="toggleMediaSelection(${item.id})">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
             </div>
             <div class="p-2 bg-white">
                 <p class="text-xs text-gray-600 truncate" title="${item.name}">${item.name}</p>
@@ -627,6 +637,61 @@ window.handleGalleryUpload = function(files) {
         }
     });
 };
+
+// Delete gallery item
+window.deleteGalleryItem = function(galleryId, buttonElement) {
+    if (!confirm('Bạn có chắc chắn muốn xóa ảnh này? File và record sẽ bị xóa vĩnh viễn.')) {
+        return;
+    }
+    
+    // Disable button
+    if (buttonElement) {
+        buttonElement.disabled = true;
+        buttonElement.innerHTML = '<svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+    }
+    
+    fetch(`/admin/api/galleries/${galleryId}`, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Accept': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Remove from selection if selected
+            window.selectedMediaIds.delete(galleryId);
+            
+            // Reload gallery
+            window.loadMediaGallery(window.currentPage || 1);
+            
+            // Update selected count
+            const countSpan = document.getElementById('selectedCount');
+            if (countSpan) {
+                if (window.thumbnailSelectionMode) {
+                    countSpan.textContent = `Đã chọn: ${window.selectedMediaIds.size} / 1 ảnh (hình đại diện)`;
+                } else {
+                    countSpan.textContent = `Đã chọn: ${window.selectedMediaIds.size} ảnh`;
+                }
+            }
+        } else {
+            alert('Không thể xóa ảnh: ' + (data.message || 'Unknown error'));
+            if (buttonElement) {
+                buttonElement.disabled = false;
+                buttonElement.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>';
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error deleting gallery:', error);
+        alert('Có lỗi xảy ra khi xóa ảnh!');
+        if (buttonElement) {
+            buttonElement.disabled = false;
+            buttonElement.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>';
+        }
+    });
+};
 </script>
 
 <style>
@@ -640,6 +705,15 @@ window.handleGalleryUpload = function(files) {
 
 #mediaGalleryGrid img:hover {
     transform: scale(1.05);
+}
+
+/* Hover effect to show delete button */
+#mediaGalleryGrid > div:hover .delete-gallery-btn {
+    opacity: 1 !important;
+}
+
+.delete-gallery-btn {
+    transition: opacity 0.2s;
 }
 
 /* Ensure upload button is visible */

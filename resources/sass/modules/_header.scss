@@ -1,0 +1,104 @@
+// Header styles
+.header-body {
+    background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), 
+                url(/img/header-bg.jpg) left center/cover no-repeat;
+    height: 80vh;
+    position: relative;
+}
+
+#header .banner-heading {
+    padding-top: 8rem;
+    font: 9rem var(--banner-text);
+    line-height: 3.6rem;
+    transform: matrix3d(0.990268, -0.139173, 0, 0, 0.139173, 0.990268, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    text-shadow: 3px 3px 8px var(--secondary-color);
+    transform-origin: 50% 50% 0px;
+    display: inline-block;
+}
+
+#header .banner-heading .banner-heading-top {
+    animation: coffeeAnim;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+#header .banner-heading .banner-heading-bottom {
+    animation: mattersAnim;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+#header .header-img {
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.banner-paragraph {
+    font: 1.5rem var(--banner-text);
+    transform: matrix3d(0.990268, -0.139173, 0, 0, 0.139173, 0.990268, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    animation: banner-p-anim;
+}
+
+#header .banner-heading,
+#header .banner-paragraph {
+    text-shadow: 3px 3px 7px var(--secondary-color);
+}
+
+@keyframes coffeeAnim {
+    0% {
+        transform: translateY(70px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes mattersAnim {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+
+// Hero wrap (for other pages)
+.hero-wrap {
+    background-attachment: fixed !important;
+}
+
+.header-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+}
+
+.header-wrap__text {
+    text-shadow: 3px 3px 8px var(--secondary-color);
+    font-family: var(--banner-text);
+    display: flex;
+    flex-direction: column;
+}
+
+.bread {
+    font-size: 8rem;
+    letter-spacing: 2px;
+    text-align: center;
+    animation: coffeeAnim;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+

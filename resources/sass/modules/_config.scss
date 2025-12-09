@@ -1,0 +1,35 @@
+// Config - Cấu hình chung
+
+// Z-index scale
+$z-index-loader: 1000;
+$z-index-overlay: 3333;
+$z-index-search-input: 3334;
+$z-index-navbar: 888;
+$z-index-modal-close: 1050;
+
+// Breakpoints (for reference, sử dụng trong media queries)
+$breakpoint-xs: 575.98px;
+$breakpoint-sm: 767.98px;
+$breakpoint-md: 991.98px;
+$breakpoint-lg: 1199.98px;
+$breakpoint-xl: 1399.98px;
+
+// Transitions
+$transition-default: all 0.3s ease;
+$transition-fast: all 0.2s ease;
+$transition-slow: all 0.5s ease;
+$transition-slower: all 1s ease;
+
+// Border radius
+$border-radius-sm: 5px;
+$border-radius-md: 10px;
+$border-radius-lg: 1.5rem;
+$border-radius-circle: 50%;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 4rem;
+$spacing-xl: 8rem;
+

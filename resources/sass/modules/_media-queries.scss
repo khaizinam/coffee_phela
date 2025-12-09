@@ -1,0 +1,396 @@
+// Media Queries - Responsive styles
+@media (max-width: 991.98px) {
+    .heading {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+
+    .navbar-nav {
+        box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    }
+    
+    .navbar-brand {
+        margin-right: 0;
+    }
+
+    .navbar .nav-link {
+        color: var(--dark) !important;
+        background: var(--white);
+        padding: .8rem !important;
+        margin: 0;
+    }
+    
+    .navbar .nav-link:hover {
+        border-radius: 5px;
+        font-size: 14px;
+    }   
+    
+    .nav-scrolled .bar {
+        background-color: var(--dark);
+    }
+
+    #header .header-img {
+        width: 25%;
+    }
+
+    .column-content {
+        box-shadow: none !important;
+    }
+
+    .offer-image {
+        width: 80% !important;
+    }
+
+    .brunch-img, .happyhour-img {
+        height: 37rem !important;
+    }
+
+    #welcome-info .heading {
+        font-size: 2.5rem !important;
+        line-height: 2rem;
+    }
+
+    #buddha .buddha-img {
+        display: none !important;
+    }
+
+    #buddha .welcome-info-icon {
+        margin: 0 auto 32px !important;
+        width: 100%;
+    }
+
+    #tea .tea-image {
+        height: 60vh;
+    }
+
+    #blog .fourth-card {
+        display: inline !important;
+    }
+
+    .cbp-caption-activeWrap {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) { 
+    .header-body {
+        background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), 
+                    url(/img/header-bg.jpg) center center/cover no-repeat;
+    }
+
+    .btn-button {
+        padding: .5rem 1.5rem;
+    }
+
+    #header .banner-heading {
+        font: 7rem var(--banner-text);
+        line-height: 2.5rem;
+    }
+
+    .banner-paragraph {
+        font: 1.3rem var(--banner-text);
+    }
+
+    #header .header-img {
+        bottom: -10%;
+    }
+
+    .heading {
+        font-size: 2rem;
+        line-height: 2.3rem;
+    }
+
+    .search-header__input {
+        font: 1.5rem var(--paragraph-text);
+    }
+
+    .search-header__close {
+        font-size: 2rem;
+    }
+
+    .search-overlay {
+        width: 100%;
+        height: calc(100% + 50rem);
+        background-color: var(--brown-light);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3333;
+        display: none;
+    }
+
+    .welcome-txt {
+        font: 15px var(--paragraph-text);
+    }
+
+    #welcome .first-column,
+    #welcome .last-column {
+        padding: 4rem 0;
+    }
+
+    #welcome-info .heading {
+        font-size: 2rem;
+    }
+
+    .welcome-info-icon {
+        font-size: 3rem;
+    }
+
+    .first-column-content {
+        position: static;
+    }
+
+    .welcome-img1 {
+        width: 70% !important;
+    }
+
+    .happyhour-title, .menu-title {
+        font-size: 15px;
+    }
+
+    #offer .offer-image {
+        width: 70%;
+    }
+
+    #tea .heading {
+        font-size: 3rem;
+    }
+
+    #tea .tea-text {
+        font: 15px var(--subheading-text);
+        font-weight: 600;
+        text-shadow: var(--white) 1px 1px 1px;
+    }
+    
+    #tea .tea-text,
+    #tea .heading {
+        letter-spacing: 0.3rem;
+    }
+
+    #tea .tea-image {
+        height: 50vh;
+    }
+
+    #buddha .heading {
+        line-height: 3rem;
+    }
+
+    #menu .menu-item .heading,
+    #footer .footer-col .heading {
+        font-size: 20px;
+    }
+
+    #menu .menu-item .menu-title, #menu .menu-item-price {
+        font-size: 15px;
+    }
+
+    #menu .menu-description {
+        font-size: 13px;
+    }
+    
+    #blog .fourth-card {
+        display: none !important;
+    }
+
+    #work {
+        display: none;
+    }
+
+    #work .cbp-l-filters-alignCenter .cbp-filter-item {
+        font-size: 12px;
+        margin: 0;
+    }
+    
+    .main-content {
+        margin-bottom: 45rem;
+    }
+
+    #footer {
+        min-height: 45rem;
+        height: auto;
+        position: fixed;
+    }
+
+    .direction-social-icons {
+        font-size: 1.3rem;
+    }
+
+    .page-wrap {
+        display: table-row;
+    }
+
+    .bread {
+        font-size: 3.5rem !important;
+    }
+
+    .video-hero {
+        background-size: cover !important;
+        height: 400px !important;
+    }
+
+    .middle {
+        position: static !important;
+        transform: translateX(0) !important;
+    }
+
+    .contact-main__first {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-main__last {
+        margin-top: 1.5rem;
+    }
+
+    .map {
+        padding: 0;
+    }
+
+    .map .row {
+        height: 400px;
+    }
+
+    .header-wrap__text h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .header-body {
+        height: 100vh;
+    }
+
+    .hero-wrap {
+        max-height: 55vh;
+    }
+
+    .navbar {
+        height: 3rem;
+    }
+
+    .navbar .navbar-brand {
+        font: 20px var(--title-text);
+    }
+
+    .navbar .nav-link:hover {
+        border: none;
+        border-radius: 0px;
+    }
+
+    .cart-dropdown-inner .cart-icon {
+        font-size: 23px;
+    }
+
+    #header .banner-heading {
+        padding-top: 12rem;
+        font: 5rem var(--banner-text);
+        line-height: 1.8rem;
+        transform-origin: bottom;
+    }
+
+    #header .header-img {
+        padding-top: 2.5rem;
+    }
+
+    #welcome {
+        margin-top: 0;
+    }
+
+    .first-column-content {
+        position: static;
+    }
+
+    .offer-image {
+        width: 45% !important;
+    }
+
+    #work {
+        display: none;
+    }
+
+    .main-content {
+        margin-bottom: 42rem;
+    }
+
+    #footer {
+        min-height: 42rem;
+        height: auto;
+        position: fixed;
+        padding: 2rem 0 1rem 0;
+    }
+
+    .direction-social-icons {
+        font-size: 1.3rem;
+    }
+    
+    #footer .footer-text {
+        color: var(--grey);
+        font: 12px var(--paragraph-text);
+    }
+
+    #footer .footer-col .heading {
+        font-size: 18px;
+    }
+    
+    #footer .footer-contact-mail {
+        font-size: 14px;
+    }
+    
+    #footer .footer-contact-mail:hover {
+        font-size: 16px;
+    }
+    
+    #footer .footer-email {
+        border: 1px solid var(--grey);
+        padding: 1.1rem;
+    }
+    
+    #footer .footer-btn {
+        height: 38px;
+    }
+
+    #footer .happyhour-phone {
+        font-size: 18px;
+    }
+
+    .modal-header .popup-image {
+        opacity: 1;
+    }
+
+    .modal-header .popup-image-text {
+        bottom: 0;
+    }
+
+    .popup-image-text .modal-header-heading {
+        font-size: 1.2rem;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .modal-menu-price {
+        font-size: 1.2rem;
+    }
+
+    .story__left {
+        box-shadow: none;
+    }
+
+    .testimonial__text {
+        font-size: 14px;
+    }
+
+    .about__main-content {
+        margin-bottom: 28rem;
+    }
+
+    .about__main-content #footer {
+        height: 28rem;
+        position: fixed;
+        padding: 0;
+    }
+
+    .middle {
+        position: static !important;
+        transform: translateX(0) !important;
+    }
+}
+

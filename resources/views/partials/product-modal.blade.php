@@ -3,10 +3,10 @@
   aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content position-relative">
-      <button type="button" class="close-button" data-dismiss="modal" aria-label="Close" style="position: absolute; top: -10px; right: -10px; z-index: 1050;">
-        <i class="fas fa-times" aria-hidden="true"></i>
-      </button>
-      <div class="modal-header border-0 pb-0">
+      <div class="modal-header border-0 pb-0 position-relative">
+        <button type="button" class="close-button" data-dismiss="modal" aria-label="Close">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
       </div>
       <div class="modal-body pt-4">
         <div class="row">

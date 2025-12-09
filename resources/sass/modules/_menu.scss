@@ -1,0 +1,111 @@
+// Menu styles
+.menu-title,
+.happyhour-title,
+.menu-item-price {
+    font: 16px/24px var(--paragraph-text);
+}
+
+.menu-title {
+    text-transform: capitalize;
+    margin-bottom: 2px;
+}
+
+.menu-description {
+    font-size: 14px;
+    margin-bottom: 6px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.menu-name:hover > .menu-title {
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.happyhour-phone {
+    font: 1.5rem var(--title-text);
+}
+
+#menu .menu-item .heading {
+    color: var(--secondary-color);
+}
+
+#menu-displaynone {
+    display: none;
+}
+
+#menu .menu-item:nth-child(1),
+#menu .menu-item:nth-child(3) {
+    border: 1px dotted rgba(14, 13, 13, 0.9);
+    border-top: 0;
+    border-left: 0;
+    border-radius: .7rem;
+    box-shadow: 5px 10px 30px grey;
+}
+
+// Menu page styles
+.menyu .row {
+    background-color: var(--grey);
+}
+
+.menyu-price {
+    color: var(--secondary-color);
+    position: absolute;
+    bottom: 50%;
+    left: 10%;
+    background-color: var(--white);
+    padding: .5rem;
+    border-radius: 50%;
+}
+
+.menyu .menu-title {
+    border-bottom: 1px dashed var(--grey);
+}
+
+.menyu-content__image {
+    height: 50vh;
+    width: 100%;
+    position: relative;
+}
+
+.menyu-content__image::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: url(https://vip-restaurant.vamtam.com/wp-content/themes/vip-restaurant/vamtam/assets/images/waves-decoration.svg) repeat-x center top;
+    background-size: auto;
+    background-attachment: scroll;
+    height: 3rem;
+}
+
+.menyu-content .container {
+    background-color: var(--grey);
+    border-radius: 2rem;
+}
+
+.menyu-content .subheading {
+    color: var(--secondary-color);
+}
+
+.menyu-content__items {
+    position: relative;
+}
+
+.menyu-content__items::before,
+.menyu-content__items::after {
+    background-color: var(--grey);
+}
+
+.menyu-content__items .menu-item:hover {
+    border-radius: .7rem;
+    transition: .5s;
+}
+
+.menyu-content__items .menu-item {
+    transition: .5s;
+}
+

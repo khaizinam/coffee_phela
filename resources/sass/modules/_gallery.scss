@@ -1,0 +1,32 @@
+// Gallery styles
+.gallery__filter--button {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    font: .8rem var(--paragraph-text) !important;
+}
+
+.gallery__filter--button:hover {
+    color: var(--secondary-color);
+    transition: .5s;
+}
+
+.gallery__filter--button:hover.gallery__filter--button::after {
+    content: '';
+    height: 1px;
+    width: 50%;
+    background-color: var(--secondary-color);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gallery-product {
+    overflow: hidden;
+}
+
+.gallery-image {
+    height: 100%;
+}
+

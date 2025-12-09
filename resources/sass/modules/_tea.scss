@@ -1,0 +1,55 @@
+// Tea section styles
+#tea .tea-image {
+    height: 70vh;
+    position: relative;
+}
+
+#tea .tea-image:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: url(https://vip-restaurant.vamtam.com/wp-content/uploads/2016/06/waves-decoration.svg) repeat-x center top;
+    background-size: auto;
+    background-attachment: scroll;
+    height: 3rem;
+}
+
+#tea .heading {
+    font-size: 4rem;
+}
+
+#tea .tea-text {
+    font: 18px var(--subheading-text);
+    font-weight: 700;
+}
+
+#tea .tea-text,
+#tea .heading {
+    letter-spacing: .5rem;
+}
+
+#tea .heading {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#tea .heading:before,
+#tea .heading:after {
+    content: '';
+    border-top: 1px solid;
+    margin: 0 1.5rem 0 35rem;
+    flex: 1 0 20px;
+}
+
+#tea .heading:after {
+    margin: 0 35rem 0 1.5rem;
+}
+
+.tea-text {
+    color: var(--secondary-color);
+}
+

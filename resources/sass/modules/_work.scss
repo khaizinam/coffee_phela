@@ -1,0 +1,81 @@
+// Work section styles
+#work {
+    margin: 8rem 0;
+}
+
+#work .cbp-filter-style:after {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #f1c30f;
+    position: relative;
+    left: 12px;
+    top: -2.5px;
+    transform: rotate(45deg);
+}
+
+#work .cbp-l-filters-alignCenter {
+    margin-bottom: 40px;
+}
+
+#work .cbp-l-filters-alignCenter .cbp-filter-item.cbp-filter-item-active {
+    color: #f1c30f;
+}
+
+#work .cbp-l-filters-alignCenter .cbp-filter-counter {
+    background-color: #f1c30f;
+}
+
+#work .cbp-l-filters-alignCenter .cbp-filter-counter:after {
+    border-top: 4px solid #f1c30f;
+}
+
+#work .cbp-l-filters-alignCenter .cbp-filter-item {
+    color: #18191d;
+    font: 15px var(--paragraph-text);
+    text-transform: uppercase;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+
+#work .cbp-caption-zoom .cbp-caption-activeWrap {
+    opacity: 0;
+    top: 5%;
+    left: 5%;
+    bottom: 5%;
+    visibility: hidden;
+    z-index: 1;
+    background-color: rgba(255,255,255,0.88);
+    transition: all .4s cubic-bezier(0.57, 0.21, 0.79, 1.25);
+}
+
+#work .cbp-caption-active .cbp-caption-activeWrap {
+    background-color: rgba(255,255,255,0.88);
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    height: 90%;
+}
+
+#work .cbp-item:hover .cbp-caption-activeWrap {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    transition: all .4s cubic-bezier(0.57,0.21, 0.79, 1.25);
+}
+
+#work .cbp-l-caption-body .cbp-l-caption-title {
+    font: 30px var(--title-text);
+    color: var(--dark);
+}
+
+#work .cbp-l-caption-body .work-icon {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 40px;
+    color: var(--secondary-color);
+}
+

@@ -1,0 +1,24 @@
+// Offer section styles
+#offer {
+    margin: 8rem 0;
+}
+
+#offer .offer-image {
+    border-radius: 50%;
+    width: 100%;
+    transition: all .2s ease-in-out;
+}
+
+#offer .col-sm:hover > .offer-image {
+    border-radius: 30%;
+    transition: all .2s ease-in-out;
+}
+
+#offer .col-sm:hover > .heading {
+    color: var(--secondary-color);
+}
+
+#offer .col-sm .heading {
+    font: 24px/32px var(--title-text);
+}
+

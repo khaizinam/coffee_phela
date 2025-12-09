@@ -1,0 +1,34 @@
+// Variables - Biến màu sắc, font, kích thước
+
+// Font families
+$font-title: 'Libre Baskerville', serif;
+$font-paragraph: 'Varela Round', sans-serif;
+$font-banner: 'Kaushan Script', cursive;
+$font-subheading: 'Varela', sans-serif;
+
+// Colors
+$color-secondary: #cb7152;
+$color-dark: #23282f;
+$color-footer-head: #cb9252;
+$color-darken: #312b30;
+$color-brown-light: #F5F3F0;
+$color-grey: #f6f6f6;
+$color-white: #fff;
+
+// CSS Variables (for use in CSS)
+:root {
+    --title-text: #{$font-title};
+    --paragraph-text: #{$font-paragraph};
+    --banner-text: #{$font-banner};
+    --subheading-text: #{$font-subheading};
+    --line-height: 24px;
+    --text-size: 16px;
+    --secondary-color: #{$color-secondary};
+    --dark: #{$color-dark};
+    --footer-head-color: #{$color-footer-head};
+    --darken: #{$color-darken};
+    --brown-light: #{$color-brown-light};
+    --grey: #{$color-grey};
+    --white: #{$color-white};
+}
+

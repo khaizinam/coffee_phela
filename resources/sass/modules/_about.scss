@@ -1,0 +1,129 @@
+// About page styles
+.video-hero {
+    background-size: cover;
+    position: relative;
+    background-repeat: no-repeat;
+    z-index: 0;
+    box-shadow: 0 0 10px 1px;
+    height: 100%;
+}
+
+.story .social a {
+    border: 1px solid var(--darken);
+    font-size: 1.1rem;
+    transition: .3s;
+    padding: 3px 6px;
+    border-radius: 2px;
+}
+
+.story .social a:hover {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.svg-inline--fa.fa-w-9,
+.svg-inline--fa.fa-w-14 {
+    width: 1em;
+}
+
+.story__left {
+    box-shadow: 0 0 10px 1px;
+}
+
+.testimonial__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.position {
+    font-size: 16px;
+    color: rgba(0,0,0, .7);
+    text-transform: uppercase;
+}
+
+.testimonial__text {
+    box-shadow: 0 0 5px 1px;
+    border-radius: 20%;
+    padding: .5rem 0;
+}
+
+.quote {
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.testimony-section {
+    position: relative;
+}
+
+// Owl Carousel
+.owl-carousel .owl-stage, .owl-carousel.owl-drag .owl-item {
+    -ms-touch-action: auto;
+    touch-action: auto;
+}
+
+.owl-next {
+    right: 2%;
+}
+
+.owl-prev {
+    left: 2%;
+}
+
+.owl-next,
+.owl-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem !important;
+    color: var(--secondary-color) !important;
+    background-color: var(--white) !important;
+    border-radius: 50%;
+    border: 1px solid var(--secondary-color) !important;
+    transition: .3s;
+}
+
+.owl-next:hover,
+.owl-prev:hover {
+    color: var(--white) !important;
+    background-color: var(--secondary-color) !important;
+    transition: .3s;
+}
+
+.owl-prev svg,
+.owl-next svg {
+    margin: 0 15px;
+}
+
+.svg-inline--fa {
+    vertical-align: center !important;
+}
+
+.owl-dots {
+    text-align: center;
+}
+
+.owl-dot {
+    width: 15px;
+    height: 10px;
+    margin-left: 2px;
+    border-radius: 15%;
+    background: rgba(0,0,0,.2) !important;
+}
+
+.owl-dot.active {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.8) !important;
+}
+

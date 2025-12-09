@@ -1,0 +1,240 @@
+// Team section styles
+.team {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
+}
+
+.team .subheading {
+    color: var(--white);
+}
+
+.team-arrow-down {
+    position: relative;
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.page-wrap {
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrap-center {
+    overflow: hidden;
+    transition: width 0.5s, background 0.5s;
+}
+
+.wrap-center.expand-width {
+    // width: 430px;
+}
+
+.light-theme .wrap-center {
+    background: rgba(255, 255, 255, .0);
+    color: rgba(255, 255, 255, .7);
+}
+
+.light-theme .wrap-center.bio-active {
+    background: rgba(255, 255, 255, .1);
+}
+
+.dark-theme .wrap-center {
+    background: rgba(0, 0, 0, .0);
+    color: rgba(255, 255, 255, .9);
+}
+
+.dark-theme .wrap-center.bio-active {
+    background: rgba(0, 0, 0, .3);
+}
+
+.team-header {
+    width: 100%;
+    position: relative;
+    padding: 30px 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .0);
+    transition: border-bottom-color 0.5s;
+}
+
+.expand-width .team-header {
+    border-bottom-color: rgba(0, 0, 0, .075);
+}
+
+.team-header .team-position {
+    display: block;
+    cursor: pointer;
+    font: 1.1rem var(--title-text);
+    margin-bottom: 0;
+    padding-top: .4rem;
+    font-weight: 600;
+    transition: font 0.5s;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.team-header .team-name {
+    display: block;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: white;
+    text-transform: capitalize;
+}
+
+.team-header .avatar {
+    width: 100px;
+    margin: 0 auto;
+    backface-visibility: hidden;
+    opacity: 1;
+    transition: opacity 0.5s, width 0.5s;
+    border: 2px solid white;
+    border-radius: 150px;
+    padding: 5px;
+}
+
+.expand-width .team-header .team-position {
+    font-size: 1rem;
+}
+
+.expand-width .team-header .avatar {
+    opacity: 0.5;
+    width: 90px;
+}
+
+.expand-width .team-header .avatar:hover {
+    opacity: 1;
+}
+
+.team-header img {
+    display: block;
+    width: 100%;
+    border-radius: 100%;
+}
+
+.team-nav {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.team-nav ul li {
+    display: inline-block;
+}
+
+.team-nav .nav-btn {
+    cursor: pointer;
+    display: block;
+    font-size: 0.75em;
+    text-transform: none;
+    padding: 0.95em;
+    margin: 2px 0;
+    width: 120px;
+    border-radius: 100px;
+    backface-visibility: hidden;
+    transition: background 0.3s;
+    background: white;
+}
+
+.team-nav .nav-btn:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.team-nav .nav-btn i {
+    font-size: 70%;
+    top: -0.075em;
+}
+
+.team-toggle {
+    cursor: pointer;
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    left: 50%;
+    margin-left: -12px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    display: block;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+    backface-visibility: hidden;
+    transition: background 0.3s;
+    border: 2px solid white;
+    color: var(--white);
+}
+
+.team .svg-inline--fa {
+    vertical-align: 0;
+}
+
+.team-toggle:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.expand-height .team-toggle {
+    transform: rotate(180deg);
+}
+
+.team-about {
+    font-weight: 400;
+    width: 100%;
+    padding: 40px 60px 0px;
+    text-align: left;
+    overflow: hidden;
+    height: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    transition: height 0.5s, padding-top 0.2s;
+}
+
+.team-about .copy-block {
+    padding-top: 30px;
+}
+
+.expand-height .team-about {
+    height: 360px;
+}
+
+.team-about .close-team-about {
+    margin: 0 auto;
+    font-size: 2.2em;
+}
+
+.team-about h2 {
+    font-size: 1.5em;
+    margin: 0;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: var(--white);
+}
+
+.team-about p {
+    font-size: 0.9em;
+    line-height: 1.7;
+}
+
+.team-social {
+    padding-top: .4rem;
+}
+
+.team-social a {
+    color: var(--white);
+    border-radius: 0 !important;
+    margin: 10px;
+}
+

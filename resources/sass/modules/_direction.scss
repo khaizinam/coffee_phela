@@ -1,0 +1,60 @@
+// Direction section styles
+#direction {
+    margin: 4rem 0;
+    padding: 4rem 0;
+    background-color: var(--dark);
+    position: relative;
+}
+
+#direction .first-row {
+    min-height: 40vh;
+}
+
+#direction .direction-opening-text {
+    border-bottom: 1px dotted var(--white);
+}
+
+#direction .fa-globe-americas {
+    color: var(--secondary-color);
+}
+
+.direction-social-icons {
+    background-color: var(--white);
+    display: inline-block;
+    border-radius: 1rem;
+    padding: 0 1rem;
+    width: 10rem;
+    font-size: 1.5rem;
+}
+
+.direction-social-icons a {
+    color: var(--dark);
+}
+
+.direction-social-icons .fa-facebook-f,
+.direction-social-icons .fa-twitter,
+.direction-social-icons .fa-instagram {
+    margin-top: 5px;
+    transition: all .5s ease;
+}
+
+.direction-social-icons .fa-facebook-f:hover,
+.direction-social-icons .fa-twitter:hover,
+.direction-social-icons .fa-instagram:hover {
+    background-color: var(--dark);
+    color: var(--white);
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all .5s ease;
+}
+
+#direction .btn-button:hover {
+    background-color: var(--secondary-color);
+}
+
+#direction .first-row .heading {
+    font: 24px/32px var(--title-text);
+}
+

@@ -1,0 +1,25 @@
+// Blog pages styles
+.blog-featured .card {
+    margin: 1.5rem 0;
+}
+
+.blog-featured .card:hover {
+    box-shadow: 0 0 10px 3px rgba(0,0,0,.3);
+    transition: box-shadow .5s ease;
+}
+
+.blog-healthy .card:hover {
+    transform: scale(1.03);
+    transition: .5s;
+}
+
+.blog-healthy {
+    background-color: var(--grey);
+}
+
+.blog-featured,
+.blog-healthy,
+.blog-healthy .card {
+    transition: .5s;
+}
+

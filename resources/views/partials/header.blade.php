@@ -22,18 +22,8 @@
       <li class="nav-item ">
         <a href="{{ route('menu') }}" class="nav-link text-capitalize {{ request()->routeIs('menu') ? 'active' : '' }}">Sản phẩm</a>
       </li>
-      <li class="nav-item">
-        <div class="dropdown">
-          <a class="dropdown-toggle nav-link {{ request()->routeIs('gallery.*') ? 'active' : '' }}" href="{{ route('gallery.coffee') }}" role="button" id="dropdownMenuLink"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Ảnh
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="{{ route('gallery.coffee') }}">Ảnh Cà phê</a>
-            <a class="dropdown-item" href="{{ route('gallery.food') }}">Ảnh Thực phẩm</a>
-          </div>
-        </div>
+      <li class="nav-item ">
+        <a href="{{ route('gallery.index') }}" class="nav-link text-capitalize {{ request()->routeIs('gallery.index') ? 'active' : '' }}">Ảnh</a>
       </li>
       <li class="nav-item">
         <div class="dropdown">

@@ -1,0 +1,38 @@
+// Blog section styles
+#blog {
+    padding-bottom: 3rem;
+}
+
+#blog .card {
+    overflow: hidden;
+}
+
+#blog .card-image {
+    overflow: hidden;
+}
+
+#blog .card-img-top {
+    transform: scale(1.10);
+    transition: all .5s ease-out;
+}
+
+#blog .card:hover .card-img-top {
+    transform: none;
+    transition: all .5s ease-out;
+}
+
+#blog .card-title {
+    transition: .3s;
+}
+
+#blog .card-title:hover,
+#blog small:hover {
+    cursor: pointer;
+    color: var(--secondary-color) !important;
+    transition: .3s;
+}
+
+#blog .fourth-card {
+    display: none;
+}
+

@@ -165,36 +165,20 @@ class PageController extends Controller
         ]);
     }
 
-    public function galleryCoffee()
+    public function galleryIndex()
     {
         $seo = [
-            'title' => 'Ảnh Cà phê - Phela | Gallery Cà phê',
-            'description' => 'Thư viện ảnh cà phê của Phela. Khám phá những khoảnh khắc đẹp về cà phê, quy trình pha chế và không gian thưởng thức cà phê.',
-            'keywords' => 'ảnh cà phê, gallery cà phê, hình ảnh cà phê Phela, cà phê Việt Nam',
-            'og_title' => 'Ảnh Cà phê - Phela',
-            'og_description' => 'Thư viện ảnh cà phê của Phela - Nốt Hương Đặc Sản.',
+            'title' => 'Ảnh - Phela | Gallery',
+            'description' => 'Thư viện ảnh của Phela. Khám phá những khoảnh khắc đẹp về cà phê, trà và đặc sản Việt Nam.',
+            'keywords' => 'ảnh Phela, gallery, hình ảnh Phela, cà phê Việt Nam, trà Việt Nam, đặc sản Việt Nam',
+            'og_title' => 'Ảnh - Phela',
+            'og_description' => 'Thư viện ảnh của Phela - Nốt Hương Đặc Sản.',
             'og_image' => asset('img/new/logo-phela.png'),
-            'og_url' => route('gallery.coffee'),
-            'canonical' => route('gallery.coffee'),
+            'og_url' => route('gallery.index'),
+            'canonical' => route('gallery.index'),
         ];
 
-        return view('pages.gallery-coffee', compact('seo'));
-    }
-
-    public function galleryFood()
-    {
-        $seo = [
-            'title' => 'Ảnh Thực phẩm - Phela | Gallery Thực phẩm',
-            'description' => 'Thư viện ảnh thực phẩm của Phela. Khám phá những món ăn, đồ uống và đặc sản được chế biến từ nông sản Việt Nam.',
-            'keywords' => 'ảnh thực phẩm, gallery thực phẩm, hình ảnh món ăn Phela, đặc sản Việt Nam',
-            'og_title' => 'Ảnh Thực phẩm - Phela',
-            'og_description' => 'Thư viện ảnh thực phẩm của Phela - Nốt Hương Đặc Sản.',
-            'og_image' => asset('img/new/logo-phela.png'),
-            'og_url' => route('gallery.food'),
-            'canonical' => route('gallery.food'),
-        ];
-
-        return view('pages.gallery-food', compact('seo'));
+        return view('pages.gallery', compact('seo'));
     }
 
     public function blogHealthy()

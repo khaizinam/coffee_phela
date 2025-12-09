@@ -1,0 +1,119 @@
+// Common - Các class chung dùng cho toàn bộ ứng dụng
+
+// Scroll reveal
+html.sr .animate {
+    visibility: hidden;
+}
+
+body {
+    position: relative;
+}
+
+a {
+    color: var(--darken);
+}
+
+.bg-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-center {
+    background-position: center !important;
+}
+
+// Ornament decorations
+.add-ornament-top::before {
+    display: block;
+    background-color: var(--dark);
+    height: 26px;
+    content: '';
+    -webkit-mask-image: url(https://vip-restaurant.vamtam.com/wp-content/themes/vip-restaurant/vamtam/assets/images/ornament-top.svg);
+    mask: url(https://vip-restaurant.vamtam.com/wp-content/themes/vip-restaurant/vamtam/assets/images/ornament-top.svg#mask);
+    width: 156px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.add-ornament-bottom::after {
+    display: block;
+    background-color: var(--dark);
+    height: 26px;
+    content: '';
+    -webkit-mask-image: url(https://vip-restaurant.vamtam.com/wp-content/themes/vip-restaurant/vamtam/assets/images/ornament-bottom.svg);
+    mask: url(https://vip-restaurant.vamtam.com/wp-content/themes/vip-restaurant/vamtam/assets/images/ornament-bottom.svg#mask);
+    width: 156px;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+// Animations
+.title-above {
+    animation: appear;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+// Headings
+// .heading {
+//     font: 56px/68px var(--title-text);
+// }
+
+.heading-line {
+    overflow: hidden;
+}
+
+.heading-line:before,
+.heading-line:after {
+    background: rgb(168, 164, 164);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+}
+
+.heading-line:before {
+    margin-left: -50%;
+    right: .5em;
+}
+
+.heading-line:after {
+    left: .5em;
+    margin-right: -50%;
+}
+
+// Text utilities
+.welcome-txt {
+    font: 16px var(--paragraph-text);
+}
+
+.welcome-info-h6 {
+    font: 14px var(--subheading-text);
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.welcome-info-h6,
+.welcome-info-icon,
+.menu-item-price,
+.tea-text {
+    color: var(--secondary-color);
+}
+
+.img-450 {
+    height: 285px !important;
+    width: 285px !important;
+}
+

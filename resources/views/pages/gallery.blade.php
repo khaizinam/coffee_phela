@@ -12,7 +12,7 @@
         <div class="col-md-12">
           <div class="header-wrap__text">
             <h1 class="bread">Ảnh</h1>
-            <h2 class="text-center no-wrap">Thực phẩm</h2>
+            <h2 class="text-center no-wrap">Phê La</h2>
           </div>
         </div>
       </div>
@@ -29,6 +29,11 @@
       <button class="btn btn-default gallery__filter--button animate" data-filter="sandwich">Bánh mì</button>
       <button class="btn btn-default gallery__filter--button animate" data-filter="hamburger">Hamburger</button>
       <button class="btn btn-default gallery__filter--button animate" data-filter="dessert">Bánh ngọt</button>
+      <button class="btn btn-default gallery__filter--button animate" data-filter="cream">Kem</button>
+      <button class="btn btn-default gallery__filter--button animate" data-filter="cream">Kem</button>
+      <button class="btn btn-default gallery__filter--button animate" data-filter="cream">Kem</button>
+      <button class="btn btn-default gallery__filter--button animate" data-filter="cream">Kem</button>
+      <button class="btn btn-default gallery__filter--button animate" data-filter="cream">Kem</button>
       <button class="btn btn-default gallery__filter--button animate" data-filter="cream">Kem</button>
     </div>
     <div class="row no-gutters gallery-inner">

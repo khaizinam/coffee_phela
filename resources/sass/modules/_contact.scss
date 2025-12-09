@@ -1,0 +1,55 @@
+// Contact section styles
+.contact-main {
+    background-color: var(--brown-light);
+    position: relative;
+}
+
+.social a {
+    border-radius: 50%;
+    transition: .3s;
+    font-size: 1.1rem;
+    padding: 2px 0;
+}
+
+.contact-social a:hover {
+    background-color: var(--white);
+    color: var(--secondary-color);
+}
+
+.contact-main .middle {
+    background-color: var(--white);
+    border-radius: 2rem;
+    position: absolute;
+    top: -7%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.contact-main .middle.add-ornament-top::before,
+.contact-main .middle.add-ornament-bottom::after {
+    background-color: var(--white);
+}
+
+.contact-form label {
+    text-transform: uppercase;
+    font-size: small;
+    color: var(--secondary-color);
+}
+
+.contact-main .form-control {
+    border-color: var(--darken);
+}
+
+.contact-main .form-control:placeholder-shown {
+    font-size: .9rem !important;
+}
+
+.map {
+    padding-top: 6rem;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.map .row {
+    height: 500px;
+}
+

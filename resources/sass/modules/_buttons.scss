@@ -1,0 +1,58 @@
+// Button styles
+.btn-button {
+    transition: 1s;
+    color: var(--white);
+    border: 1px solid var(--secondary-color);
+    border-radius: 1.5rem;
+    padding: .8rem 1.8rem;
+    font: .9rem var(--paragraph-text);
+}
+
+.btn-bfr {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    background: transparent;
+    color: var(--dark);
+}
+
+.btn-bfr::before {
+    background-color: var(--secondary-color);
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: all 1s ease;
+    height: 100%;
+    width: 100%;
+}
+
+.btn-anim::before {
+    width: 100%;
+    height: 0;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.btn-anim:hover::before {
+    height: 380%;
+}
+
+.btn-anim:hover {
+    color: var(--white);
+}
+
+.btn-blog {
+    border: 1px dotted #928f8f;
+    color: var(--dark);
+    padding: .5rem 1rem;
+    font-size: 11px;
+}
+
+.btn-blog:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    transition: background-color .5s ease;
+}
+

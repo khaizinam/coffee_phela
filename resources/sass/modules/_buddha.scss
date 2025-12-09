@@ -1,0 +1,77 @@
+// Buddha section styles
+#buddha {
+    margin: 8rem 0;
+}
+
+#buddha .card .card-text {
+    font-size: 12px;
+}
+
+#buddha .card .card-category {
+    font: 11px var(--paragraph-text);
+    border: 1px solid #8b8383;
+    border-radius: 1rem;
+    padding: 0 .3rem;
+}
+
+#buddha .card .card-text,
+#buddha .card .card-title {
+    font-family: var(--title-text);
+}
+
+#buddha .card-category:hover,
+#buddha .card-title:hover {
+    color: var(--secondary-color) !important;
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+#buddha .carousel-item .card-image {
+    overflow: hidden;
+    position: relative;
+}
+
+#buddha .card-image .btn-card {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid var(--dark);
+    border-radius: 4rem;
+    font: 12px var(--title-text);
+    background-color: var(--white);
+    display: none;
+}
+
+#buddha .card-image .btn-card:hover {
+    background-color: #18191d;
+    color: var(--white);
+}
+
+#buddha .card-image:hover .card-img-top {
+    transform: scale(1.2);
+    transition: all 2s ease;
+}
+
+#buddha .card-img-top {
+    transition: all 2s ease;
+}
+
+#buddha .card:hover .btn-card {
+    display: block;
+    animation: fromBottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fromBottom {
+    from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+

@@ -21,8 +21,12 @@ class Slug extends Model
      */
     public function getFullPathAttribute(): string
     {
-        $prefix = $this->prefix ? rtrim($this->prefix, '/') : '';
-        return $prefix . '/' . $this->key;
+        if ($this->prefix) {
+            $prefix = rtrim($this->prefix, '/');
+            return $prefix . '/' . $this->key;
+        }
+        // Prefix = null, chỉ trả về /key
+        return '/' . $this->key;
     }
 
     /**
@@ -75,5 +79,31 @@ class Slug extends Model
     public function getEntityNameAttribute(): string
     {
         return class_basename($this->entity);
+    }
+
+    /**
+     * Get the entity model instance (accessor)
+     */
+    public function getEntityAttribute($value)
+    {
+        // Nếu value là tên class, trả về class name
+        if (is_string($value)) {
+            return $value;
+        }
+        return $value;
+    }
+
+    /**
+     * Get entity model instance
+     */
+    public function entity()
+    {
+        $modelClass = 'App\\Models\\' . $this->entity;
+        
+        if (!class_exists($modelClass)) {
+            return null;
+        }
+
+        return $modelClass::find($this->entity_id);
     }
 }

@@ -4,6 +4,7 @@
 <div class="header-body hero-wrap" 
   style="background:linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), 
   url('{{ asset('img/bg-blog-healthy.jpg') }}') bottom center/cover no-repeat;">
+  
   @include('partials.header')
   
   <header class="header-wrap">

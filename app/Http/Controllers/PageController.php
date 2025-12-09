@@ -3,11 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Product;
 
 class PageController extends Controller
 {
     public function home()
     {
+        // Query categories với products, order theo sort_order, tối đa 12 categories
+        $allCategories = Category::with(['products' => function ($query) {
+            $query->where('status', 'published')
+                  ->orderBy('name');
+        }])
+        ->where('status', 'active')
+        ->orderBy('sort_order')
+        ->orderBy('name')
+        ->limit(12)
+        ->get();
+
+        // 6 category đầu cho block show
+        $categories = $allCategories->take(6);
+        
+        // 6 category tiếp theo cho hidden block
+        $hiddenCategories = $allCategories->slice(6)->take(6);
+
         $seo = [
             'title' => 'Phela - Nốt Hương Đặc Sản | Trang chủ',
             'description' => 'Phela - Nốt Hương Đặc Sản. Trân quý, nâng niu những giá trị Nguyên Bản ở mỗi vùng đất, đánh thức những nốt hương đặc sản của nông sản Việt Nam. Cà phê, trà và đặc sản thủ công.',
@@ -38,7 +57,7 @@ class PageController extends Controller
             ]
         ];
 
-        return view('pages.home', compact('seo'));
+        return view('pages.home', compact('seo', 'categories', 'hiddenCategories'));
     }
 
     public function menu()
@@ -54,7 +73,15 @@ class PageController extends Controller
             'canonical' => route('menu'),
         ];
 
-        return view('pages.menu', compact('seo'));
+        // Lấy tất cả categories có status = active và sắp xếp theo sort_order
+        $categories = \App\Models\Category::where('status', 'active')
+            ->with(['products' => function ($query) {
+                $query->where('status', 'published')->orderBy('id');
+            }])
+            ->orderBy('sort_order')
+            ->get();
+
+        return view('pages.menu', compact('seo', 'categories'));
     }
 
     public function about()
@@ -106,6 +133,36 @@ class PageController extends Controller
         ];
 
         return view('pages.contact', compact('seo'));
+    }
+
+    /**
+     * Get product detail for modal
+     */
+    public function getProductDetail($id)
+    {
+        $product = \App\Models\Product::with('categories')
+            ->findOrFail($id);
+
+        // Lấy thumbnail
+        $thumbnail = $product->thumbnail_url;
+
+        // Lấy gallery images
+        $galleryImages = $product->getMedia('gallery')->map(function ($media) {
+            return [
+                'url' => $media->getUrl(),
+                'name' => $media->name,
+            ];
+        });
+
+        return response()->json([
+            'id' => $product->id,
+            'name' => $product->name,
+            'content' => $product->content,
+            'price' => $product->price,
+            'thumbnail' => $thumbnail,
+            'gallery' => $galleryImages,
+            'categories' => $product->categories->pluck('name')->toArray(),
+        ]);
     }
 
     public function galleryCoffee()

@@ -19,6 +19,9 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/recipe', [PageController::class, 'blogRecipe'])->name('recipe');
 });
 
+// API route để lấy chi tiết sản phẩm
+Route::get('/api/products/{id}', [PageController::class, 'getProductDetail'])->name('api.product.detail');
+
 // Route alias cho Filament authentication nếu cần
 Route::get('/login', function () {
     return redirect()->route('filament.auth.login');

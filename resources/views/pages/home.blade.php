@@ -104,7 +104,7 @@
   </div>
 </section> -->
 
-@include('partials.modal')
+@include('partials.product-modal')
 
 <section id="offer">
   <div class="container">
@@ -227,332 +227,76 @@
     <h4 class="heading heading-line animate text-center">Sản phẩm</h4>
     <h6 class="welcome-info-h6 animate text-center font-weight-bold pt-0 pt-sm-2">~ Đặc biệt hôm nay ~</h6>
     <div class="row">
-      <div class="col-lg-4 menu-item  mt-5 py-4">
-        <h3 class="heading"><u>Cà phê</u></h3>
-        <div class="menu-item-content">
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ XỈU VANI</h3>
-          </div>
-          <p class="menu-description">(Có sẵn Thạch) Vị chua nhẹ tự nhiên của hạt Arabica Lạc Dương...</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ ESPRESSO (Hạt Colom, Ethi)</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ ESPRESSO (Hạt Ro, Ara)</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ LATTE (Hạt Colom, Ethi)</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ LATTE (Hạt Ro, Ara)</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ CAPPU (Hạt Ro, Ara)</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ AME (Hạt Ro, Ara)</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ AME (Hạt Colom, Ethi)</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ NÂU</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ ĐEN</h3>
-          </div>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">PHÊ ĐEN</h3>
-          </div>
-
-          <h3 class="heading pt-3"><u>SYPHON</u></h3>
-          <div class="menu-item-content">
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-            </div>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Mật Nhãn - Ô Long Long Nhãn Sữa</h3>
-            </div>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Phong Lan (size La)</h3>
-            </div>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Ô Long Nhài Sữa (size La)</h3>
-            </div>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Ô Long Sữa Phê La (size La)</h3>
-            </div>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Phong Lan (Ô Long Vani Sữa)</h3>
-            </div>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Ô LONG SỮA PHÊ LA</h3>
-            </div>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Ô LONG NHÀI SỮA</h3>
-            </div>
-          </div>
-        </div>
-      </div>
+      @forelse($categories->chunk(2) as $categoryChunk)
       <div class="col-lg-4 menu-item mt-5 py-4">
-        <h3 class="heading"><u>FRENCH PRESS</u></h3>
+            @foreach($categoryChunk as $category)
+              <h3 class="heading"><u>{{ $category->name }}</u></h3>
         <div class="menu-item-content">
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">LỤA ĐÀO - Phiên bản Đồng Chill yêu thích (size La)</h3>
+                @forelse($category->products as $product)
+                  <div class="menu-name pt-1 d-flex justify-content-between align-items-center product-clickable" 
+                    data-product-id="{{ $product->id }}"
+                    data-toggle="modal"
+                    data-target="#productModal"
+                    style="cursor: pointer;">
+                    <h3 class="menu-title">{{ $product->name }}</h3>
+                    @if($product->price > 0)
+                      <span class="menu-item-price align-self-end">{{ number_format($product->price, 0, ',', '.') }}₫</span>
+                    @endif
           </div>
-          <p class="menu-description">Phiên bản kèm Đào Hồng Dầm và Thạch Trà Đào Hồng. Trà Ô Long Lụa Đào thơm hoa ngọt ngào, kết hợp cùng Sữa Tươi Thanh Trùng</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">LỤA ĐÀO - Phiên bản Đồng Chill yêu thích (size Phê)</h3>
+                  @if($product->description)
+                    <p class="menu-description">{{ $product->description }}</p>
+                  @endif
+                @empty
+                  <p class="text-muted">Chưa có sản phẩm trong danh mục này.</p>
+                @endforelse
           </div>
-          <p class="menu-description">Phiên bản kèm Đào Hồng Dầm và Thạch Trà Đào Hồng. Trà Ô Long Lụa Đào thơm hoa ngọt ngào, kết hợp cùng Sữa Tươi Thanh Trùng</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">Trà Vỏ Cà Phê (size La)</h3>
+            @endforeach
           </div>
-          <p class="menu-description">Trà Vỏ Cà Phê - thức uống độc đáo được làm từ vỏ quả cà phê, hương trà thơm nhẹ hòa quyện cùng vị chua dịu của chanh vàng.</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">Ô LONG ĐÀO HỒNG (Size La)</h3>
-          </div>
-          <p class="menu-description">Phiên bản kèm Đào Hồng Dầm và Thạch Trà Đào Hồng. Trà Ô Long Đào Hồng thanh mát, vị trà nhẹ nhàng, thơm đào ngọt ngào,</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">Gấm (size La)</h3>
-          </div>
-          <p class="menu-description">Gấm sự kết hợp giữa Trà Ô Long Vải thơm mát cùng với trái vải căng mọng, đem đến dư vị ngọt mát và thanh khiết.</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">GẤM</h3>
-          </div>
-          <p class="menu-description">Gấm - Vị trà Ô Long hòa quyện cùng trái vải căng mọng, mang đến dư vị ngọt mát và thanh khiết giải nhiệt tuyệt vời cho ngày hè.</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">TRÀ VỎ CÀ PHÊ</h3>
-          </div>
-          <p class="menu-description">Trà Vỏ Cà Phê được ủ từ vỏ cà phê, hương trà thơm nhẹ hoà quyện cùng vị chua dịu của chanh vàng.</p>
-
-          <h3 class="heading pt-5"><u>MOKA POT</u></h3>
-          <div class="menu-item-content">
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Tấm (size La)</h3>
-            </div>
-            <p class="menu-description">Trà Ô Long đậm đà kết hợp hài hoà với gạo rang thơm bùi.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Khói B'Lao (size La)</h3>
-            </div>
-            <p class="menu-description">Sự hoà quyện của các tầng hương: Nốt hương đầu là khói đậm, hương giữa là khói nhẹ & đọng lại ở hậu vị là hương hoa ngọc lan.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">KHÓI B'LAO</h3>
-            </div>
-            <p class="menu-description">Khói B'Lao sự hoà quyện của các tầng hương: Nốt hương đầu là khói đậm, hương giữa là khói nhẹ & đọng lại ở hậu vị là hương hoa ngọc lan.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">TẤM</h3>
-            </div>
-            <p class="menu-description">Tấm là sự kết hợp hoàn hảo giữa vị đậm đà của trà Ô Long và hương thơm bùi của gạo rang nguyên chất, mang đến thức uống độc đáo và đầy hấp dẫn.</p>
-          </div>
+      @empty
+        <div class="col-12">
+          <p class="text-center text-muted">Chưa có danh mục sản phẩm.</p>
         </div>
-      </div>
-      <div class="col-lg-4 menu-item mt-5 py-4">
-        <h3 class="heading"><u>COLD BREW</u></h3>
-        <div class="menu-item-content">
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">SỮA CHUA BÒNG BƯỞI</h3>
-          </div>
-          <p class="menu-description">(Có sẵn Thạch Trà Chanh Vàng) Sữa Chua Ô Long đá xay sáng tạo cùng nền trà Cold Brew, vị Bưởi the the, thêm Chanh Vàng tươi mát. Sản phẩm có thể bị tan với khoảng cách xa trên 3,5km.</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">BÒNG BƯỞI - Ô LONG BƯỞI NHA ĐAM</h3>
-          </div>
-          <p class="menu-description">Trà Ô Long Đặc Sản kết hợp cùng vị Bưởi the mát, thêm Vỏ Bưởi sấy và Nha Đam giòn dai sần sật, mang đến hương vị thanh mát & nhẹ nhàng.</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">Lang Biang (size La)</h3>
-          </div>
-          <p class="menu-description">Lang Biang hương vị thuần khiết của trà Ô Long Đặc Sản cùng mứt hoa nhài thơm nhẹ.</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">SI MƠ - COLD BREW Ô LONG MƠ ĐÀO (size La)</h3>
-          </div>
-          <p class="menu-description">Trà Ô Long Đặc Sản ủ lạnh, kết hợp cùng Mơ Má Đào và Đào Hồng dầm, thêm Thạch Trà Vỏ mềm dai mang đến hương vị thanh mát & nhẹ nhàng</p>
-          <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-            data-target="#modalbox">
-            <h3 class="menu-title ">LANG BIANG</h3>
-          </div>
-          <p class="menu-description">Lang Biang với hương vị thuần khiết của trà Ô Long Đặc Sản cùng mứt hoa nhài thơm nhẹ.</p>
-
-          <h3 class="heading pt-5"><u>Ô LONG MATCHA</u></h3>
-          <div class="menu-item-content">
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">MATCHA PHAN XI PĂNG</h3>
-            </div>
-            <p class="menu-description">Lớp kem Ô Long Matcha kết hợp cùng cốt dừa đá xay mát lạnh, thưởng thức cùng Thạch Ô Long Matcha mềm mượt mang đến trải nghiệm thú vị.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">MATCHA COCO LATTE</h3>
-            </div>
-            <p class="menu-description">Matcha Coco Latte với Lớp kem Ô Long Matcha bồng bềnh sánh mịn hoà quyện cùng sữa dừa Bến Tre hữu cơ ngọt thơm.</p>
-          </div>
-        </div>
-      </div>
+      @endforelse
     </div>
     <!-- menu display none  -->
-    <div id="menu-displaynone">
+    @if(isset($hiddenCategories) && $hiddenCategories->count() > 0)
+      <div id="menu-displaynone" style="display: none;">
       <div class="row">
+          @foreach($hiddenCategories->chunk(2) as $categoryChunk)
         <div class="col-lg-4 menu-item mt-5 py-4">
-          <h3 class="heading"><u>TOPPING</u></h3>
+                @foreach($categoryChunk as $category)
+                  <h3 class="heading"><u>{{ $category->name }}</u></h3>
           <div class="menu-item-content">
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">THẠCH TRÀ CHANH VÀNG</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
+                    @forelse($category->products as $product)
+                      <div class="menu-name pt-1 d-flex justify-content-between align-items-center product-clickable" 
+                        data-product-id="{{ $product->id }}"
+                        data-toggle="modal"
+                        data-target="#productModal"
+                        style="cursor: pointer;">
+                        <h3 class="menu-title">{{ $product->name }}</h3>
+                        @if($product->price > 0)
+                          <span class="menu-item-price align-self-end">{{ number_format($product->price, 0, ',', '.') }}₫</span>
+                        @endif
             </div>
-            <p class="menu-description">Thạch Trà Chanh Vàng mềm dai, thơm dịu - không chất bảo quản - thủ công sáng tạo từ Trà Cold Brew Ô Long Bưởi & Chanh Vàng. Phù hợp với mọi trà trái cây tại Phê La.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">THẠCH XỈU VANI</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
+                      @if($product->description)
+                        <p class="menu-description">{{ $product->description }}</p>
+                      @endif
+                    @empty
+                      <p class="text-muted">Chưa có sản phẩm trong danh mục này.</p>
+                    @endforelse
             </div>
-            <p class="menu-description">Thạch Xỉu Vani mềm mượt - không chất bảo quản - thủ công sáng tạo từ cà phê Arabica Lạc Dương & Robusta Lâm Hà, kết hợp Vani Tự Nhiên cùng Sữa Dừa. Phù hợp với các sản phẩm Cà Phê Phin & Cà Phê Máy.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">THẠCH TRÀ ĐÀO HỒNG</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
-            </div>
-            <p class="menu-description">Thạch Ô Long Đào Hồng mềm dai - không chất bảo quản - thủ công sáng tạo từ Trà Ô Long Đặc Sản & Đào Hồng Dầm. Phù hợp với tất cả sản phẩm Trà Trái Cây tại Phê La</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">THẠCH Ô LONG MATCHA</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
-            </div>
-            <p class="menu-description">Thạch Ô Long Matcha mềm mượt - không chất bảo quản - thủ công sáng tạo từ Trà Ô Long Matcha & Sữa Dừa Bến Tre. Phù hợp với mọi sản phẩm trà sữa và Ô Long Matcha tại Phê La.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">THẠCH TRÀ VỎ</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
-            </div>
-            <p class="menu-description">Thạch Trà Vỏ mềm dai - không chất bảo quản - thủ công sáng tạo từ Trà Vỏ Cà Phê & Ô Mai Dây gia truyền (Xí Muội). Phù hợp với mọi trà trái cây tại Phê La.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">TRÂN CHÂU PHONG LAN</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
-            </div>
-            <p class="menu-description">Trân Châu Phong Lan giòn dai - không chất bảo quản, xen lẫn hạt Vani đen tự nhiên & hương vị nhẹ nhàng. Phù hợp với mọi đồ uống tại Phê La.</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">Trân Châu Ô Long</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
-            </div>
-            <p class="menu-description">Trân châu Ô Long: Nguyên liệu: Trà Ô Long Phương thức: Thủ công..</p>
-            <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-              data-target="#modalbox">
-              <h3 class="menu-title ">TRÂN CHÂU GẠO RANG</h3>
-              <span class="menu-item-price align-self-end">20.000Đ</span>
-            </div>
-            <p class="menu-description">Trân châu mềm dẻo - vị trà Ô Long hoà quyện cùng gạo rang thơm bùi nhẹ nhàng. Phù hợp thưởng thức cùng trà sữa. Không chất bảo quản. Nguyên bản - thủ công.</p>
-
-            <h3 class="heading pt-5"><u>PLUS - LON/CHAI</u></h3>
-            <div class="menu-item-content">
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">Plus - Mật Nhãn</h3>
-                <span class="menu-item-price align-self-end">20.000Đ</span>
+                @endforeach
               </div>
-              <p class="menu-description">Lon 500ml. Trà Ô Long Đặc Sản hoà quyện cùng Long Nhãn ngọt ngào, nốt hương đỗ đen rang thơm bùi. HSD 3 ngày từ NSX. Bảo quản 2-5 độ C. Lắc đều trước khi dùng. Sử dụng trong vòng 24h sau khi mở nắp. Sản phẩm đóng gói theo quy cách tiêu chuẩn, không bao gồm Túi giữ nhiệt Phê La.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - KHÓI B'LAO</h3>
-                <span class="menu-item-price align-self-end">20.000Đ</span>
-              </div>
-              <p class="menu-description">Lon 500ml. Trà Ô Long đậm đà cùng nốt hương đầu là khói đậm, hương giữa là khói nhẹ & lại ở hậu vị là hương hoa ngọc lan. </p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - MATCHA COCO LATTE</h3>
-                <span class="menu-item-price align-self-end">20.000Đ</span>
-              </div>
-              <p class="menu-description">Lon 500ml. Trà Ô Long Matcha nhẹ nhàng kết hợp cùng Sữa Dừa Bến Tre hữu cơ ngọt thơm. HSD 3 ngày từ NSX.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - LỤA ĐÀO</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">(100% đường) Lon 500ml. Trà Ô Long Lụa Đào thơm hoa ngọt ngào, kết hợp cùng Sữa Tươi Thanh Trùng Phê La, kèm Đào Hồng Dầm.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - PHONG LAN</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">(100% đường) Lon 500ml. Plus - Phong Lan Trà Ô Long Đặc Sản hòa quyện cùng Vani tự nhiên, vị nhẹ nhàng, tinh tế.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - COLD BREW</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">(Sản phẩm không đường) Chai 500ml. Plus - Cold Brew Trà Ô Long ủ lạnh, hậu vị ngọt và thanh mát.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - ĐÀ LẠT</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">(100% đường) Chai 250ml. Cà phê Arabica Đà Lạt đậm đà hòa quyện cùng kem whipping thơm ngậy.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - ĐỈNH PHÙ VÂN</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">(100% đường) Chai 250ml. Đỉnh Phù Vân là sự kết hợp tinh tế giữa Trà Ô Long Đỏ đậm đà và kem whipping nhẹ nhàng, tạo nên lớp sánh ngậy</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - TẤM</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lon 500ml. Trà Ô Long đậm đà kết hợp hài hoà với gạo rang thơm bùi.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - Ô LONG NHÀI SỮA</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description"> Lon 500ml. Ô Long Nhài Sữa là sự kết hợp Trà Ô Long đậm đà cùng hương nhài thơm tinh tế, thêm chút thơm ngậy từ sữa.</p>
-              <div class="menu-name pt-1 d-flex justify-content-between align-items-center" data-toggle="modal"
-                data-target="#modalbox">
-                <h3 class="menu-title ">PLUS - Ô LONG SỮA PHÊ LA</h3>
-                <span class="menu-item-price align-self-end">20$</span>
-              </div>
-              <p class="menu-description">Lon 500ml. Trà Ô Long Đặc Sản đậm đà hòa quyện cùng vị sữa thơm ngậy.</p>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
-    </div>
+    @endif
+    @if(isset($hiddenCategories) && $hiddenCategories->count() > 0)
     <div class="view-more-button">
       <button id="toggle-vm" type="button"
         class="btn btn-button btn-bfr btn-anim btn-lg d-flex mx-auto justify-content-center mt-4">Xem thêm</button>
     </div>
+    @endif
   </div>
 </section>
 

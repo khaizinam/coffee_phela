@@ -20,7 +20,7 @@
         <a href="{{ route('home') }}" class="nav-link text-capitalize {{ request()->routeIs('home') ? 'active' : '' }}">Trang chủ</a>
       </li>
       <li class="nav-item ">
-        <a href="{{ route('menu') }}" class="nav-link text-capitalize {{ request()->routeIs('menu') ? 'active' : '' }}">Thực đơn</a>
+        <a href="{{ route('menu') }}" class="nav-link text-capitalize {{ request()->routeIs('menu') ? 'active' : '' }}">Sản phẩm</a>
       </li>
       <li class="nav-item">
         <div class="dropdown">
